@@ -14,12 +14,15 @@ public class game_environment {
 	crew Crew = new crew();
 	
 	
-	// day controlers
+	// day functions
 	public void set_days(int day) {
 		days = day;
 	}
 	public void add_day () {
 		days += 1;
+	}
+	public int get_day() {
+		return days;
 	}
 	
 	
