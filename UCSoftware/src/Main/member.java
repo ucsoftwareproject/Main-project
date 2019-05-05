@@ -7,6 +7,8 @@ public class member {
 	private float hunger;
 	private float tiredness;
 	private boolean sick;
+	public String type_name;
+
 	
 	//returns the current health of the crew member
 	public float get_health(){
@@ -27,6 +29,8 @@ public class member {
 	public float get_hunger() {
 		return hunger;
 	}
+	
+	//sets up the initial values for the 
 	
 	
 }
