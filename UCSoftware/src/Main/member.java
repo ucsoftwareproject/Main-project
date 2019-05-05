@@ -3,7 +3,7 @@ package Main;
 public class member {
 
 	private String name;
-	private float health;
+	private static float health;
 	private float hunger;
 	private float tiredness;
 	private boolean sick;
@@ -30,7 +30,11 @@ public class member {
 		return hunger;
 	}
 	
-	//sets up the initial values for the 
+	//sets up the initial values for the crew member
+	public static void setup_crew_member() {
+		health = type.health_buff;
+		
+	}
 	
 	
 }
