@@ -16,7 +16,7 @@ public class game_environment {
 	protected List<item> master_items = new ArrayList<>();
 	private List<crew> Master_crew = new ArrayList<>();
 	
-	private int days = 0;
+	private int days = 3;
 	crew Crew;
 	
 	
@@ -25,10 +25,15 @@ public class game_environment {
 		days = day;
 	}
 	public void add_day () {
-		days += 1;
+		if(days < 10) {
+			days += 1;}
 	}
-	public int get_day() {
-		return days;
+	public void minus_day () {
+		if(days > 3) {
+			days -= 1;}
+	}
+	public String get_day() {
+		return String.valueOf(days);
 	}
 	
 	
@@ -66,6 +71,10 @@ public class game_environment {
 		Crew = new crew("temp", 6);
 	}
 	
+	//sets up the GUI
+	public void launchMainScreen() {
+		GUI_Welcome_Screen mainWindow = new GUI_Welcome_Screen(this);
+	}
 	
 	/**
 	 * @param args
@@ -74,6 +83,7 @@ public class game_environment {
 		// TODO Auto-generated method stub
 		
 		game_environment engine = new game_environment();
+		engine.launchMainScreen();
 		
 		
 	}
