@@ -14,6 +14,7 @@ public class game_environment {
 
 	
 	protected List<item> master_items = new ArrayList<>();
+	private List<crew> Master_crew = new ArrayList<>();
 	
 	private int days = 0;
 	crew Crew = new crew();
