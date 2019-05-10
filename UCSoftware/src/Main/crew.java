@@ -7,6 +7,13 @@ public class crew {
 
 	private String name;
 	public List<member> Members = new ArrayList<>();
+	private int max_size;
+	
+	public crew(String Name, int Size) {
+		name = Name;
+		max_size = Size;
+	}
+	
 	
 	//name functions
 	public void set_name(String Name) {
@@ -14,6 +21,9 @@ public class crew {
 	}
 	public String get_name() {
 		return name;
+	}
+	public int get_max_size() {
+		return max_size;
 	}
 	
 	//members functions

@@ -17,7 +17,7 @@ public class game_environment {
 	private List<crew> Master_crew = new ArrayList<>();
 	
 	private int days = 0;
-	crew Crew = new crew();
+	crew Crew;
 	
 	
 	// day functions
@@ -61,6 +61,9 @@ public class game_environment {
 	//main setup controller
 	public game_environment() {
 		build_items();
+		
+		//make crew
+		Crew = new crew("temp", 6);
 	}
 	
 	
