@@ -68,7 +68,8 @@ public class GUI_Welcome_Screen {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				environment.launchcrew_screen();
+				frmWelcome.dispose();
 			}
 		});
 		btnConfirm.setBounds(166, 232, 89, 23);

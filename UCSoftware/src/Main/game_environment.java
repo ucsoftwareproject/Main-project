@@ -76,6 +76,10 @@ public class game_environment {
 		GUI_Welcome_Screen mainWindow = new GUI_Welcome_Screen(this);
 	}
 	
+	public void launchcrew_screen() {
+		Crew_setup_window crew_window = new Crew_setup_window(this);
+	}
+	
 	/**
 	 * @param args
 	 */
