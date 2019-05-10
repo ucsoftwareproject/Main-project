@@ -119,15 +119,16 @@ public class Crew_setup_window {
 		txtpnEachClassIs.setBounds(207, 68, 225, 181);
 		frame.getContentPane().add(txtpnEachClassIs);
 		
-		//text field for naming ship
 		JLabel lblNameYourShip = new JLabel("Name your ship:");
 		lblNameYourShip.setBounds(10, 221, 117, 14);
 		frame.getContentPane().add(lblNameYourShip);
 		
+		//text field for naming ship
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(10, 256, 86, 20);
+		textField_4.setBounds(10, 256, 161, 20);
 		frame.getContentPane().add(textField_4);
+		
 		
 		//button to lock in data
 		JButton btnConfirmCrew = new JButton("Confirm ");

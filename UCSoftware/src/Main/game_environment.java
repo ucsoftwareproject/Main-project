@@ -15,7 +15,7 @@ public class game_environment {
 	
 	protected List<item> master_items = new ArrayList<>();
 	private List<crew> Master_crew = new ArrayList<>();
-	
+	public String ship_name;
 	private int days = 3;
 	crew Crew;
 	
@@ -69,6 +69,11 @@ public class game_environment {
 		
 		//make crew
 		Crew = new crew("temp", 6);
+	}
+	
+	//sets the ships name
+	public void set_ship_name(String name) {
+		ship_name = name;
 	}
 	
 	//sets up the GUI
