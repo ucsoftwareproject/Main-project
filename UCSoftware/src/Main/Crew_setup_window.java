@@ -110,13 +110,13 @@ public class Crew_setup_window {
 		frame.getContentPane().add(txtDavid);
 		
 		txtTest = new JTextField();
-		txtTest.setText("test");
+		txtTest.setText("Enter a name!");
 		txtTest.setColumns(10);
 		txtTest.setBounds(111, 132, 86, 20);
 		frame.getContentPane().add(txtTest);
 		
 		txtTest_1 = new JTextField();
-		txtTest_1.setText("test");
+		txtTest_1.setText("Enter a name!");
 		txtTest_1.setColumns(10);
 		txtTest_1.setBounds(111, 163, 86, 20);
 		frame.getContentPane().add(txtTest_1);
@@ -155,13 +155,13 @@ public class Crew_setup_window {
 				environment.add_member(txtDaniel.getText(), environment.master_types.get(comboBox.getSelectedIndex()));
 				environment.add_member(txtDavid.getText(), environment.master_types.get(comboBox_1.getSelectedIndex()));
 				
-				//checks if a third person has been added (DOES NOT WORK YET)
-				if (!("test".contentEquals(txtTest.getText()))) {
+				//checks if a third person has been added 
+				if (!("Enter a name!".contentEquals(txtTest.getText()))) {
 					environment.add_member(txtTest.getText(), environment.master_types.get(comboBox_2.getSelectedIndex()));
 				}
 				
-				//checks if a fourth person has been added (DOES NOT WORK YET)
-				if (!("test".contentEquals(txtTest_1.getText()))) {
+				//checks if a fourth person has been added
+				if (!("Enter a name!".contentEquals(txtTest_1.getText()))) {
 					environment.add_member(txtTest_1.getText(), environment.master_types.get(comboBox_3.getSelectedIndex()));
 				}
 				environment.set_ship_name(textField_4.getText());
