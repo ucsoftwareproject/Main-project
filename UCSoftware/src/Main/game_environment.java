@@ -131,7 +131,7 @@ public class game_environment {
 	}
 	
 	public void launchconfirmationscreen() {
-		Confirmation_screen confirm_screen = new Confirmation_screen(this);
+		Confirmation_screen confirm_screen = new Confirmation_screen(this, Crew);
 	}
 	
 	/**

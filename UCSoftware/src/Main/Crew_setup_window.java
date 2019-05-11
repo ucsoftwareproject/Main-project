@@ -21,7 +21,7 @@ public class Crew_setup_window {
 	private JTextField txtDavid;
 	private JTextField txtTest;
 	private JTextField txtTest_1;
-	private JTextField textField_4;
+	private JTextField txtStarmansShip;
 	private static game_environment environment;
 
 
@@ -142,10 +142,11 @@ public class Crew_setup_window {
 		frame.getContentPane().add(lblNameYourShip);
 		
 		//text field for naming ship
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(10, 256, 161, 20);
-		frame.getContentPane().add(textField_4);
+		txtStarmansShip = new JTextField();
+		txtStarmansShip.setText("Starman's Ship");
+		txtStarmansShip.setColumns(10);
+		txtStarmansShip.setBounds(10, 256, 161, 20);
+		frame.getContentPane().add(txtStarmansShip);
 		
 		
 		//button to lock in data
@@ -164,7 +165,7 @@ public class Crew_setup_window {
 				if (!("Enter a name!".contentEquals(txtTest_1.getText()))) {
 					environment.add_member(txtTest_1.getText(), environment.master_types.get(comboBox_3.getSelectedIndex()));
 				}
-				environment.set_ship_name(textField_4.getText());
+				environment.set_ship_name(txtStarmansShip.getText());
 				environment.crew_debug();
 				environment.launchconfirmationscreen();
 				frame.dispose();
