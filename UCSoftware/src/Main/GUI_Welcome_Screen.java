@@ -69,6 +69,7 @@ public class GUI_Welcome_Screen {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				environment.launchcrew_screen();
+				environment.day_debug();
 				frmWelcome.dispose();
 			}
 		});

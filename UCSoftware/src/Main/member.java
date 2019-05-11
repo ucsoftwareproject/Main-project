@@ -7,8 +7,17 @@ public class member {
 	private float hunger;
 	private float tiredness;
 	private boolean sick;
-	public String type_name;
+	private Type2 type;
+	
+	public member(String Name, Type2 Type) {
+		name = Name;
+		type = Type;
+	}
 
+	
+	public String get_name() {
+		return name;
+	}
 	
 	//returns the current health of the crew member
 	public float get_health(){
@@ -30,11 +39,8 @@ public class member {
 		return hunger;
 	}
 	
-	//sets up the initial values for the crew member
-	public static void setup_crew_member() {
-		health = type.health_buff;
-		
+	public String get_type_name() {
+		return type.get_type_name();
 	}
-	
 	
 }

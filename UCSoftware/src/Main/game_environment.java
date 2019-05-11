@@ -15,8 +15,10 @@ public class game_environment {
 	
 	protected List<item> master_items = new ArrayList<>();
 	private List<crew> Master_crew = new ArrayList<>();
+	protected List<Type2> master_types = new ArrayList<>();
 	public String ship_name;
 	private int days = 3;
+	private int current_day = 0;
 	crew Crew;
 	
 	
@@ -36,6 +38,15 @@ public class game_environment {
 		return String.valueOf(days);
 	}
 	
+	//prints days for debug
+	public void day_debug() {
+		System.out.println("total days: " + get_day() + "\n");
+	}
+	
+	//prints days for debug
+	public void crew_debug() {
+		Crew.debug();
+	}
 	
 	
 	//builds Master_ items list
@@ -63,13 +74,43 @@ public class game_environment {
 		System.out.println("\n");
 	}
 	
+	
+	private void build_types() {
+		
+		master_types.add(new Type2("ENGINEER"));
+		master_types.add(new Type2("ATHLETE"));
+		master_types.add(new Type2("SCIENTIST"));
+		master_types.add(new Type2("PUSHOVER"));
+		master_types.add(new Type2("CYBORG"));
+		master_types.add(new Type2("DOCTOR"));
+		
+		// for testing
+		System.out.println("Master types:");
+		for (Type2 s: master_types) {
+			System.out.println("\t* " + s.get_type_name());
+		}
+		System.out.println("\n");
+	}
+	
 	//main setup controller
 	public game_environment() {
+		
+		//builds master lists
 		build_items();
+		build_types();
 		
 		//make crew
-		Crew = new crew("temp", 6);
+		Crew = new crew("temp", 4);
 	}
+	
+	public void add_member(String name, Type2 Type) {
+		member Member = new member(name, Type);
+		Crew.add_member(Member);
+	}
+	
+	
+	
+	
 	
 	//sets the ships name
 	public void set_ship_name(String name) {

@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +10,9 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Crew_setup_window {
 
@@ -80,6 +84,15 @@ public class Crew_setup_window {
 		comboBox_3.setBounds(10, 163, 91, 20);
 		frame.getContentPane().add(comboBox_3);
 		
+		
+		//add to combo box
+		for (Type2 s: environment.master_types) {
+			comboBox.addItem(s.get_type_name());
+			comboBox_1.addItem(s.get_type_name());
+			comboBox_2.addItem(s.get_type_name());
+			comboBox_3.addItem(s.get_type_name());
+		}
+		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(113, 43, 46, 14);
 		frame.getContentPane().add(lblName);
@@ -132,6 +145,15 @@ public class Crew_setup_window {
 		
 		//button to lock in data
 		JButton btnConfirmCrew = new JButton("Confirm ");
+		btnConfirmCrew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				environment.add_member(textField.getText(), environment.master_types.get(comboBox.getSelectedIndex()));
+				environment.add_member(textField_1.getText(), environment.master_types.get(comboBox_1.getSelectedIndex()));
+				environment.add_member(textField_2.getText(), environment.master_types.get(comboBox_2.getSelectedIndex()));
+				environment.add_member(textField_3.getText(), environment.master_types.get(comboBox_3.getSelectedIndex()));
+				environment.crew_debug();
+			}
+		});
 		btnConfirmCrew.setBounds(207, 260, 153, 23);
 		frame.getContentPane().add(btnConfirmCrew);
 	}
