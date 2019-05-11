@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Confirmation_screen {
 
@@ -88,8 +90,16 @@ public class Confirmation_screen {
 		frame.getContentPane().add(label);
 		label.setText(environment.get_day());
 		
+		//confirms information and goes to the next screen
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launch_action_window();
+				frame.dispose();
+			}
+		});
 		btnConfirm.setBounds(130, 278, 89, 23);
 		frame.getContentPane().add(btnConfirm);
+		
 	}
 }

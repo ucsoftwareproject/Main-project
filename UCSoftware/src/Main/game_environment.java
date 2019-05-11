@@ -134,6 +134,10 @@ public class game_environment {
 		Confirmation_screen confirm_screen = new Confirmation_screen(this, Crew);
 	}
 	
+	public void launch_action_window() {
+		action_window action = new action_window(this, Crew);
+	}
+	
 	/**
 	 * @param args
 	 */
