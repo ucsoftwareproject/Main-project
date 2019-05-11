@@ -17,10 +17,10 @@ import java.awt.event.ActionEvent;
 public class Crew_setup_window {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtDaniel;
+	private JTextField txtDavid;
+	private JTextField txtTest;
+	private JTextField txtTest_1;
 	private JTextField textField_4;
 	private static game_environment environment;
 
@@ -97,30 +97,35 @@ public class Crew_setup_window {
 		lblName.setBounds(113, 43, 46, 14);
 		frame.getContentPane().add(lblName);
 		
-		textField = new JTextField();
-		textField.setBounds(111, 68, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		txtDaniel = new JTextField();
+		txtDaniel.setText("Daniel");
+		txtDaniel.setBounds(111, 68, 86, 20);
+		frame.getContentPane().add(txtDaniel);
+		txtDaniel.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(111, 99, 86, 20);
-		frame.getContentPane().add(textField_1);
+		txtDavid = new JTextField();
+		txtDavid.setText("David");
+		txtDavid.setColumns(10);
+		txtDavid.setBounds(111, 99, 86, 20);
+		frame.getContentPane().add(txtDavid);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(111, 132, 86, 20);
-		frame.getContentPane().add(textField_2);
+		txtTest = new JTextField();
+		txtTest.setText("test");
+		txtTest.setColumns(10);
+		txtTest.setBounds(111, 132, 86, 20);
+		frame.getContentPane().add(txtTest);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(111, 163, 86, 20);
-		frame.getContentPane().add(textField_3);
+		txtTest_1 = new JTextField();
+		txtTest_1.setText("test");
+		txtTest_1.setColumns(10);
+		txtTest_1.setBounds(111, 163, 86, 20);
+		frame.getContentPane().add(txtTest_1);
 		
 		JLabel lblInformation = new JLabel("Information:");
 		lblInformation.setBounds(207, 43, 100, 14);
 		frame.getContentPane().add(lblInformation);
 		
+		//describes classes
 		JTextPane txtpnEachClassIs = new JTextPane();
 		txtpnEachClassIs.setText("Each class is has different strengths and weaknesses. "
 				+ "Engineers are the best at repairing, and decent overall\r\n" + 
@@ -147,11 +152,22 @@ public class Crew_setup_window {
 		JButton btnConfirmCrew = new JButton("Confirm ");
 		btnConfirmCrew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				environment.add_member(textField.getText(), environment.master_types.get(comboBox.getSelectedIndex()));
-				environment.add_member(textField_1.getText(), environment.master_types.get(comboBox_1.getSelectedIndex()));
-				environment.add_member(textField_2.getText(), environment.master_types.get(comboBox_2.getSelectedIndex()));
-				environment.add_member(textField_3.getText(), environment.master_types.get(comboBox_3.getSelectedIndex()));
+				environment.add_member(txtDaniel.getText(), environment.master_types.get(comboBox.getSelectedIndex()));
+				environment.add_member(txtDavid.getText(), environment.master_types.get(comboBox_1.getSelectedIndex()));
+				
+				//checks if a third person has been added (DOES NOT WORK YET)
+				if (!("test".contentEquals(txtTest.getText()))) {
+					environment.add_member(txtTest.getText(), environment.master_types.get(comboBox_2.getSelectedIndex()));
+				}
+				
+				//checks if a fourth person has been added (DOES NOT WORK YET)
+				if (!("test".contentEquals(txtTest_1.getText()))) {
+					environment.add_member(txtTest_1.getText(), environment.master_types.get(comboBox_3.getSelectedIndex()));
+				}
+				environment.set_ship_name(textField_4.getText());
 				environment.crew_debug();
+				environment.launchconfirmationscreen();
+				frame.dispose();
 			}
 		});
 		btnConfirmCrew.setBounds(207, 260, 153, 23);

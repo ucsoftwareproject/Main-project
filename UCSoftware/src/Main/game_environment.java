@@ -117,6 +117,10 @@ public class game_environment {
 		ship_name = name;
 	}
 	
+	public String get_ship_name() {
+		return(ship_name);
+	}
+	
 	//sets up the GUI
 	public void launchMainScreen() {
 		GUI_Welcome_Screen mainWindow = new GUI_Welcome_Screen(this);
@@ -124,6 +128,10 @@ public class game_environment {
 	
 	public void launchcrew_screen() {
 		Crew_setup_window crew_window = new Crew_setup_window(this);
+	}
+	
+	public void launchconfirmationscreen() {
+		Confirmation_screen confirm_screen = new Confirmation_screen(this);
 	}
 	
 	/**
