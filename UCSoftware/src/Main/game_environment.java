@@ -138,6 +138,11 @@ public class game_environment {
 		action_window action = new action_window(this, Crew);
 	}
 	
+	public void launch_outpost() {
+		outpost_gui outpost = new outpost_gui(this);
+	}
+	
+	
 	/**
 	 * @param args
 	 */

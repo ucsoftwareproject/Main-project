@@ -54,7 +54,7 @@ public class action_window {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblActiveCrewMember = new JLabel("Active Crew Member:");
-		lblActiveCrewMember.setBounds(21, 21, 114, 14);
+		lblActiveCrewMember.setBounds(20, 45, 114, 14);
 		frame.getContentPane().add(lblActiveCrewMember);
 		
 		JTextPane textPane = new JTextPane();
@@ -62,7 +62,7 @@ public class action_window {
 		frame.getContentPane().add(textPane);
 		
 		JButton btnViewShipStatus = new JButton("View Ship Status");
-		btnViewShipStatus.setBounds(21, 64, 194, 65);
+		btnViewShipStatus.setBounds(20, 91, 194, 65);
 		frame.getContentPane().add(btnViewShipStatus);
 		
 		JButton btnViewActiveCrew = new JButton("View active crew member status");
@@ -70,11 +70,11 @@ public class action_window {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnViewActiveCrew.setBounds(241, 64, 194, 65);
+		btnViewActiveCrew.setBounds(241, 91, 194, 65);
 		frame.getContentPane().add(btnViewActiveCrew);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(145, 18, 143, 20);
+		comboBox.setBounds(143, 42, 143, 20);
 		frame.getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Sleep");
@@ -106,15 +106,27 @@ public class action_window {
 		frame.getContentPane().add(textPane_1);
 		
 		JLabel lblCrewMemberHas = new JLabel("Crew member has x actions left, what should they do?");
-		lblCrewMemberHas.setBounds(21, 163, 366, 14);
+		lblCrewMemberHas.setBounds(21, 187, 366, 14);
 		frame.getContentPane().add(lblCrewMemberHas);
 		
 		JButton btnNewButton_1 = new JButton("Visit the outpost");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launch_outpost();
+				frame.dispose();
+			}
+		});
 		btnNewButton_1.setBounds(21, 409, 206, 56);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnEndTheDay = new JButton("End the day");
 		btnEndTheDay.setBounds(517, 409, 206, 56);
 		frame.getContentPane().add(btnEndTheDay);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setText("Day " + environment.get_day() + ".");
+		lblNewLabel.setBounds(20, 11, 233, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
 	}
 }
