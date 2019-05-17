@@ -30,9 +30,17 @@ public class game_environment {
 		if(days < 10) {
 			days += 1;}
 	}
+	// used for setting the day in the GUI
 	public void minus_day () {
 		if(days > 3) {
 			days -= 1;}
+	}
+	
+	//used for ending the day in the game environment
+	public void end_day () {
+		if (days > 1) {
+			days -= 1;
+		}//else end the game since the player is out of time
 	}
 	public String get_day() {
 		return String.valueOf(days);
@@ -58,7 +66,7 @@ public class game_environment {
 		master_items.add( new item("soda", 2, 1f, 0, 2f));
 		master_items.add( new item("apple", 3, 25f, 0, 50f));
 		
-		//meds
+		// meds
 		master_items.add( new item("Med Kit", 4, 40f, 1, 100f));
 		master_items.add( new item("band aid", 5, 5f, 1, 10f));
 		master_items.add( new item("pain killer", 6, 10f, 1, 15f));
@@ -140,6 +148,10 @@ public class game_environment {
 	
 	public void launch_outpost() {
 		outpost_gui outpost = new outpost_gui(this);
+	}
+	
+	public void launch_event() {
+		Event_window event = new Event_window(this);
 	}
 	
 	

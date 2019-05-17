@@ -120,11 +120,17 @@ public class action_window {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnEndTheDay = new JButton("End the day");
+		btnEndTheDay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launch_event();
+				frame.dispose();
+			}
+		});
 		btnEndTheDay.setBounds(517, 409, 206, 56);
 		frame.getContentPane().add(btnEndTheDay);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setText("Day " + environment.get_day() + ".");
+		lblNewLabel.setText("There are " + environment.get_day() + " days remaining.");
 		lblNewLabel.setBounds(20, 11, 233, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
