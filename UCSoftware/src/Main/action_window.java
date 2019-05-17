@@ -76,6 +76,11 @@ public class action_window {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(143, 42, 143, 20);
 		frame.getContentPane().add(comboBox);
+		for (member item : environment.Crew.get_members()) {
+			comboBox.addItem(item.get_name());
+		}
+		
+		
 		
 		JButton btnNewButton = new JButton("Sleep");
 		btnNewButton.setBounds(21, 224, 121, 65);

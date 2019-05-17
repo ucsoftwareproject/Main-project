@@ -8,6 +8,7 @@ public class crew {
 	private String name;
 	public List<member> Members = new ArrayList<>();
 	private int max_size;
+	private int money = 100;
 	
 	public crew(String Name, int Size) {
 		name = Name;
@@ -41,6 +42,20 @@ public class crew {
 	}
 	public List<member> get_members() {
 		return Members;
+	}
+	
+	//money functions
+	public void set_money(int amount) {
+		money = amount;
+	}
+	public int get_money() {
+		return money;
+	}
+	public void add_money(int amount) {
+		money += amount;
+	}
+	public void sub_money(int amount) {
+		money += -amount;
 	}
 		
 	

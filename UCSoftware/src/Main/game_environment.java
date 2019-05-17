@@ -4,6 +4,7 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.List;
 
 /**
@@ -19,8 +20,42 @@ public class game_environment {
 	public String ship_name;
 	private int days = 3;
 	private int current_day = 0;
-	crew Crew;
+	public crew Crew;
+	public outpost Outpost = new outpost();
 	
+	public item get_random_item() {
+		
+		Random rand = new Random();
+		return master_items.get(rand.nextInt(master_items.size()));
+	}
+	
+	public void spawn_items(int size) {
+		Outpost.clear_items();
+		int i = 0;
+		while (i < size){
+			Outpost.add_items(get_random_item());
+			i += 1;
+		}
+		
+		// for testing
+		System.out.println("Outpost items:");
+		for (item s: Outpost.get_items()) {
+			System.out.println("\t* " + s.get_name());
+		}
+		System.out.println("\n");
+		
+	}
+	
+	public List<item> shop_items(){
+		spawn_items(6);
+		return Outpost.get_items();
+	}
+	
+	
+	//outpost 
+	public outpost get_outpost() {
+		return Outpost;
+	}
 	
 	// day functions
 	public void set_days(int day) {

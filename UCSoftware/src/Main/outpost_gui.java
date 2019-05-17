@@ -7,7 +7,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 
 public class outpost_gui {
 
@@ -44,6 +49,11 @@ public class outpost_gui {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		List<item> shop_items = environment.shop_items();
+		
+		
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 702, 510);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,13 +63,9 @@ public class outpost_gui {
 		lblWelcomeToThe.setBounds(269, 22, 189, 14);
 		frame.getContentPane().add(lblWelcomeToThe);
 		
-		JLabel lblPlayerMoney = new JLabel("Player money:");
-		lblPlayerMoney.setBounds(27, 70, 102, 14);
+		JLabel lblPlayerMoney = new JLabel("Player money: " + environment.Crew.get_money() + ".");
+		lblPlayerMoney.setBounds(27, 70, 174, 14);
 		frame.getContentPane().add(lblPlayerMoney);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(27, 136, 174, 236);
-		frame.getContentPane().add(textPane);
 		
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setBounds(211, 301, 304, 71);
@@ -82,5 +88,16 @@ public class outpost_gui {
 		});
 		btnLeave.setBounds(302, 394, 89, 52);
 		frame.getContentPane().add(btnLeave);
+		
+		DefaultListModel listModel;
+		listModel = new DefaultListModel();
+		for (item s: shop_items) {
+			listModel.addElement(s.get_name());
+		}
+		
+		JList Shop = new JList(listModel);
+		Shop.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		Shop.setBounds(29, 95, 172, 277);
+		frame.getContentPane().add(Shop);
 	}
 }
