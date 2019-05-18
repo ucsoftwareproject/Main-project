@@ -74,10 +74,9 @@ public class game_environment {
 	
 	//used for ending the day in the game environment
 	public void end_day () {
-		if (days > 1) {
 			days -= 1;
-		}//else end the game since the player is out of time
 	}
+	
 	public String get_day() {
 		return String.valueOf(days);
 	}
@@ -199,6 +198,10 @@ public class game_environment {
 	
 	public void launch_event() {
 		Event_window event = new Event_window(this);
+	}
+	
+	public void launch_failure() {
+		failure_window fail = new failure_window();
 	}
 	
 	

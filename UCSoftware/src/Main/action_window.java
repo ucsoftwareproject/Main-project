@@ -148,7 +148,12 @@ public class action_window {
 		JButton btnEndTheDay = new JButton("End the day");
 		btnEndTheDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_event();
+				String day = environment.get_day();
+				if (Integer.valueOf(day) > 1) {
+					environment.launch_event();
+					}else {
+						environment.launch_failure();
+					}
 				frame.dispose();
 			}
 		});
