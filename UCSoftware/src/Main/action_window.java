@@ -55,7 +55,7 @@ public class action_window {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblActiveCrewMember = new JLabel("Active Crew Member:");
-		lblActiveCrewMember.setBounds(20, 45, 114, 14);
+		lblActiveCrewMember.setBounds(20, 45, 154, 14);
 		frame.getContentPane().add(lblActiveCrewMember);
 		
 		JTextPane textPane = new JTextPane();
@@ -75,7 +75,7 @@ public class action_window {
 		
 		//shows the current crew member
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(143, 42, 143, 20);
+		comboBox.setBounds(184, 42, 143, 20);
 		frame.getContentPane().add(comboBox);
 		for (member item : environment.Crew.get_members()) {
 			comboBox.addItem(item.get_name());
