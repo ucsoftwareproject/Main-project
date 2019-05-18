@@ -43,4 +43,8 @@ public class member {
 		return type.get_type_name();
 	}
 	
+	public int get_base_repair() {
+		return type.get_base_repair();
+	}
+	
 }

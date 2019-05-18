@@ -4,7 +4,7 @@ public class Type2 {
 	static float health_buff;
 	float tiredness_buff;
 	float hunger_buff;
-	float repair_buff;
+	int repair_buff;
 	public String type_name;
 	
 	
@@ -60,7 +60,7 @@ public class Type2 {
 				tiredness_buff = 5;
 				hunger_buff = 5;
 				repair_buff = 5;
-				type_name = "DOCTOR";
+				type_name = "Doctor";
 				break;
 		}
 	}	
@@ -81,7 +81,7 @@ public class Type2 {
 	}
 	
 	//gets the base stat for repairing
-	public float get_base_repair() {
+	public int get_base_repair() {
 		return repair_buff;
 	}
 	
@@ -89,4 +89,6 @@ public class Type2 {
 	public String get_type_name() {
 		return type_name;
 	}
+	
+	
 }

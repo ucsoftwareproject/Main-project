@@ -63,6 +63,11 @@ public class action_window {
 		frame.getContentPane().add(textPane);
 		
 		JButton btnViewShipStatus = new JButton("View Ship Status");
+		btnViewShipStatus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textPane.setText("Ship Name: " + environment.get_ship_name() + "\nShield HP: " + environment.get_shield_hp());
+			}
+		});
 		btnViewShipStatus.setBounds(20, 91, 194, 65);
 		frame.getContentPane().add(btnViewShipStatus);
 		
@@ -76,7 +81,8 @@ public class action_window {
 			comboBox.addItem(item.get_name());
 		}
 		
-		
+		btnViewActiveCrew.setBounds(241, 91, 194, 65);
+		frame.getContentPane().add(btnViewActiveCrew);
 		btnViewActiveCrew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String item = "Name: " + active_person.get_name() + "\nType " + active_person.get_type_name() + 
@@ -87,20 +93,24 @@ public class action_window {
 			}
 		});
 		
-		btnViewActiveCrew.setBounds(241, 91, 194, 65);
-		frame.getContentPane().add(btnViewActiveCrew);
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setBounds(472, 224, 251, 141);
+		frame.getContentPane().add(textPane_1);
 		
-		
-
-		
-		
-		
-		
+		// lets the crew member sleep
 		JButton btnNewButton = new JButton("Sleep");
 		btnNewButton.setBounds(21, 224, 121, 65);
 		frame.getContentPane().add(btnNewButton);
 		
+		// repairs the shields by the current active members shield repair stat
 		JButton btnRepairShields = new JButton("Repair Shields ");
+		btnRepairShields.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int repair_v = active_person.get_base_repair();
+				environment.add_shield_hp(repair_v);
+				textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+			}
+		});
 		btnRepairShields.setBounds(167, 224, 121, 65);
 		frame.getContentPane().add(btnRepairShields);
 		
@@ -120,9 +130,6 @@ public class action_window {
 		btnUseMedication.setBounds(314, 309, 121, 65);
 		frame.getContentPane().add(btnUseMedication);
 		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBounds(472, 224, 251, 141);
-		frame.getContentPane().add(textPane_1);
 		
 		JLabel lblCrewMemberHas = new JLabel("Crew member has x actions left, what should they do?");
 		lblCrewMemberHas.setBounds(21, 187, 366, 14);

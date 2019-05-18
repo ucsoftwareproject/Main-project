@@ -18,6 +18,7 @@ public class game_environment {
 	private List<crew> Master_crew = new ArrayList<>();
 	protected List<Type2> master_types = new ArrayList<>();
 	public String ship_name;
+	public int shield_hp = 10;
 	private int days = 3;
 	private int current_day = 0;
 	public crew Crew;
@@ -79,6 +80,18 @@ public class game_environment {
 	}
 	public String get_day() {
 		return String.valueOf(days);
+	}
+	
+	public int get_shield_hp () {
+		return shield_hp;
+	}
+	
+	public void add_shield_hp(int repair_v) {
+		shield_hp += repair_v;
+	}
+	
+	public void damage_shield(int damage_v) {
+		shield_hp -= damage_v;
 	}
 	
 	//prints days for debug

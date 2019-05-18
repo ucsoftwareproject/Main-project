@@ -14,7 +14,7 @@ public class type{
 	static float health_buff;
 	float tiredness_buff;
 	float hunger_buff;
-	float repair_buff;
+	int repair_buff;
 	public String type_name;
 	
 	//sets the individual stats of the class
@@ -86,7 +86,7 @@ public class type{
 	}
 	
 	//gets the base stat for repairing
-	public float get_base_repair() {
+	public int get_base_repair() {
 		return repair_buff;
 	}
 }
