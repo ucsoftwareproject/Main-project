@@ -116,8 +116,7 @@ public class game_environment {
 		}
 		System.out.println("\n");
 	}
-	
-	
+		
 	private void build_types() {
 		
 		master_types.add(new Type2("ENGINEER"));

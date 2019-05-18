@@ -16,6 +16,7 @@ public class action_window {
 	private JFrame frame;
 	private static game_environment environment;
 	private static crew crew_members;
+	private static member active_person;
 
 	/**
 	 * Launch the application.
@@ -66,19 +67,32 @@ public class action_window {
 		frame.getContentPane().add(btnViewShipStatus);
 		
 		JButton btnViewActiveCrew = new JButton("View active crew member status");
-		btnViewActiveCrew.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnViewActiveCrew.setBounds(241, 91, 194, 65);
-		frame.getContentPane().add(btnViewActiveCrew);
 		
+		//shows the current crew member
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(143, 42, 143, 20);
 		frame.getContentPane().add(comboBox);
 		for (member item : environment.Crew.get_members()) {
 			comboBox.addItem(item.get_name());
 		}
+		
+		
+		btnViewActiveCrew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String item = "Name: " + active_person.get_name() + "\nType " + active_person.get_type_name() + 
+				"\nHunger level: " + active_person.get_hunger() + "\nCurrent HP: " + active_person.get_health() 
+				+ "\nEnergy: " + active_person.get_tiredness() + "\nCurrent Status: " + active_person.get_status();
+				textPane.setText(item);
+				frame.getContentPane().add(textPane);
+			}
+		});
+		
+		btnViewActiveCrew.setBounds(241, 91, 194, 65);
+		frame.getContentPane().add(btnViewActiveCrew);
+		
+		
+
+		
 		
 		
 		
