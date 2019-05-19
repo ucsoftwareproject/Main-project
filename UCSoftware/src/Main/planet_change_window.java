@@ -98,8 +98,8 @@ public class planet_change_window {
 				active_person1 = crew.Members.get(comboBox.getSelectedIndex());
 				active_person2 = crew.Members.get(comboBox_1.getSelectedIndex());
 				if (active_person1 != active_person2) {
-					if (active_person1.get_tiredness() > 1 && active_person2.get_tiredness() > 0 ) {
-						if (active_person1.get_actions() > 1 && active_person2.get_actions() > 0) {
+					if (active_person1.get_tiredness() > 0 && active_person2.get_tiredness() > 0 ) {
+						if (active_person1.get_actions() > 0 && active_person2.get_actions() > 0) {
 							textPane.setText("good");
 							active_person1.work();
 							active_person2.work();
