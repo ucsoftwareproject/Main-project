@@ -71,7 +71,10 @@ public class action_window {
 		btnViewShipStatus.setBounds(20, 91, 194, 65);
 		frame.getContentPane().add(btnViewShipStatus);
 		
-		JButton btnViewActiveCrew = new JButton("View active crew member status");
+		
+		JLabel lblCrewMemberHas = new JLabel(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
+		lblCrewMemberHas.setBounds(21, 187, 366, 14);
+		frame.getContentPane().add(lblCrewMemberHas);
 		
 		//shows the current crew member
 		JComboBox comboBox = new JComboBox();
@@ -82,7 +85,7 @@ public class action_window {
 		}
 		
 		
-		
+		JButton btnViewActiveCrew = new JButton("View active crew member status");
 		btnViewActiveCrew.setBounds(241, 91, 194, 65);
 		frame.getContentPane().add(btnViewActiveCrew);
 		btnViewActiveCrew.addActionListener(new ActionListener() {
@@ -107,6 +110,7 @@ public class action_window {
 				active_person = crew.Members.get(comboBox.getSelectedIndex());
 				if (active_person.get_actions() > 0) {
 					active_person.consume_action();
+					lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
 					active_person.sleep();
 					textPane_1.setText(active_person.get_name() + " took a nap and recovered 3 points of energy.");
 				}else {
@@ -129,6 +133,7 @@ public class action_window {
 						environment.add_shield_hp(repair_v);
 						active_person.work();
 						active_person.consume_action();
+						lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
 						textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
 					} else {
 						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
@@ -168,6 +173,7 @@ public class action_window {
 					textPane_1.setText(active_person.get_name() + " began a search!\n...\n...");
 					active_person.work();
 					active_person.consume_action();
+					lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
 					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
 					}else {
 						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
@@ -186,10 +192,6 @@ public class action_window {
 		btnUseMedication.setBounds(314, 309, 121, 65);
 		frame.getContentPane().add(btnUseMedication);
 		
-		
-		JLabel lblCrewMemberHas = new JLabel(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
-		lblCrewMemberHas.setBounds(21, 187, 366, 14);
-		frame.getContentPane().add(lblCrewMemberHas);
 		
 		JButton btnNewButton_1 = new JButton("Visit the outpost");
 		btnNewButton_1.addActionListener(new ActionListener() {
