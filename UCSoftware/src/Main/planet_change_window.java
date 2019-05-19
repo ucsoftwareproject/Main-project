@@ -14,6 +14,10 @@ public class planet_change_window {
 
 	private JFrame frame;
 	private static game_environment environment;
+	private static crew crew_members;
+	private static member active_person1;
+	private static member active_person2;
+
 
 	/**
 	 * Launch the application.
@@ -22,7 +26,7 @@ public class planet_change_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					planet_change_window window = new planet_change_window(environment);
+					planet_change_window window = new planet_change_window(environment, crew_members);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,8 +38,9 @@ public class planet_change_window {
 	/**
 	 * Create the application.
 	 */
-	public planet_change_window(game_environment engine) {
+	public planet_change_window(game_environment engine, crew crew_info) {
 		environment = engine;
+		crew_members = crew_info;
 		initialize();
 		frame.setVisible(true);		
 	}
@@ -66,16 +71,39 @@ public class planet_change_window {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(106, 67, 76, 20);
 		frame.getContentPane().add(comboBox);
+		for (member item : environment.Crew.get_members()) {
+			comboBox.addItem(item.get_name());
+		}
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(229, 67, 76, 20);
 		frame.getContentPane().add(comboBox_1);
+		for (member item : environment.Crew.get_members()) {
+			comboBox_1.addItem(item.get_name());
+		}
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(59, 150, 308, 131);
 		frame.getContentPane().add(textPane);
 		
 		JButton btnLaunch = new JButton("Launch!");
+		btnLaunch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				active_person1 = crew.Members.get(comboBox.getSelectedIndex());
+				active_person2 = crew.Members.get(comboBox_1.getSelectedIndex());
+				if (active_person1 != active_person2) {
+					if (active_person1.get_tiredness() > 1 && active_person2.get_tiredness() > 1 ) {
+						textPane.setText("good");
+						// change planet here
+					}else {
+						textPane.setText("One of these members is too tired to pilot the ship!");
+					}
+				}else {
+					textPane.setText("You need two seperate people to pilot the ship!");
+				}
+
+			}
+		});
 		btnLaunch.setBounds(156, 108, 89, 31);
 		frame.getContentPane().add(btnLaunch);
 	}

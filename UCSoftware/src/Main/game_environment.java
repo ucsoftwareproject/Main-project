@@ -205,7 +205,7 @@ public class game_environment {
 	}
 	
 	public void launch_planet_changer() {
-		planet_change_window changer = new planet_change_window(this);
+		planet_change_window changer = new planet_change_window(this, Crew);
 	}
 	
 	
