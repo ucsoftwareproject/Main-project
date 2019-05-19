@@ -16,7 +16,7 @@ public class action_window {
 	private JFrame frame;
 	private static game_environment environment;
 	private static crew crew_members;
-	private static member active_person;
+	private static member active_person = crew.Members.get(0);
 
 	/**
 	 * Launch the application.
@@ -105,9 +105,13 @@ public class action_window {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				active_person.sleep();
-				textPane_1.setText(active_person.get_name() + " took a nap and recovered 3 points of energy.");
-
+				if (active_person.get_actions() > 0) {
+					active_person.consume_action();
+					active_person.sleep();
+					textPane_1.setText(active_person.get_name() + " took a nap and recovered 3 points of energy.");
+				}else {
+					textPane_1.setText(active_person.get_name() + " is out of actions for the day!.");
+				}
 				
 			}
 		});
@@ -120,10 +124,17 @@ public class action_window {
 			public void actionPerformed(ActionEvent e) {
 				active_person = crew.Members.get(comboBox.getSelectedIndex());
 				int repair_v = active_person.get_base_repair();
-				if (active_person.get_tiredness() > 1) {
-					environment.add_shield_hp(repair_v);
-					active_person.work();
-					textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+				if (active_person.get_tiredness() > 0) {
+					if (active_person.get_actions() > 0) {
+						environment.add_shield_hp(repair_v);
+						active_person.work();
+						active_person.consume_action();
+						textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+					} else {
+						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
+
+					}
+
 				}else {
 					textPane_1.setText(active_person.get_name() + " doesn't have enough energy to repair the shields!");
 				}
@@ -151,11 +162,16 @@ public class action_window {
 		btnSearchPlanet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				if (active_person.get_tiredness() > 1) {
+				if (active_person.get_tiredness() > 0) {
+					if (active_person.get_actions() > 0) {
+						
 					textPane_1.setText(active_person.get_name() + " began a search!\n...\n...");
 					active_person.work();
+					active_person.consume_action();
 					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
-					
+					}else {
+						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
+					}
 				} else {
 					textPane_1.setText(active_person.get_name() + " is too tired to search the planet!");
 				}
@@ -171,7 +187,7 @@ public class action_window {
 		frame.getContentPane().add(btnUseMedication);
 		
 		
-		JLabel lblCrewMemberHas = new JLabel("Crew member has x actions left, what should they do?");
+		JLabel lblCrewMemberHas = new JLabel(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
 		lblCrewMemberHas.setBounds(21, 187, 366, 14);
 		frame.getContentPane().add(lblCrewMemberHas);
 		
@@ -190,6 +206,9 @@ public class action_window {
 			public void actionPerformed(ActionEvent e) {
 				String day = environment.get_day();
 				if (Integer.valueOf(day) > 1) {
+					for (member s: crew_members.get_members()) {
+						s.set_actions(3);
+					}
 					environment.launch_event();
 					}else {
 						environment.launch_failure();

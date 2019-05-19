@@ -8,6 +8,8 @@ public class member {
 	private float tiredness;
 	private boolean sick;
 	private Type2 type;
+	private int actions = 3;
+
 	
 	public member(String Name, Type2 Type) {
 		name = Name;
@@ -47,6 +49,13 @@ public class member {
 		return type.get_base_repair();
 	}
 	
+	public void set_actions(int value) {
+		actions = value;
+	}
+	
+	public float get_actions(){
+		return actions;
+	}
 	
 	public void sleep() {
 		tiredness += 3;
@@ -54,5 +63,9 @@ public class member {
 	
 	public void work() {
 		tiredness -= 1;
+	}
+	
+	public void consume_action() {
+		actions -= 1;
 	}
 }
