@@ -137,6 +137,12 @@ public class action_window {
 		frame.getContentPane().add(btnEatFood);
 		
 		JButton btnChangePlanet = new JButton("Change Planet");
+		btnChangePlanet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launch_planet_changer();
+				frame.dispose();
+			}
+		});
 		btnChangePlanet.setBounds(314, 224, 121, 65);
 		frame.getContentPane().add(btnChangePlanet);
 		

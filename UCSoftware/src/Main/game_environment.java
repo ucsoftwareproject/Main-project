@@ -204,6 +204,10 @@ public class game_environment {
 		failure_window fail = new failure_window();
 	}
 	
+	public void launch_planet_changer() {
+		planet_change_window changer = new planet_change_window(this);
+	}
+	
 	
 	/**
 	 * @param args
