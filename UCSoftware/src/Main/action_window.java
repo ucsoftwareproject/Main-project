@@ -122,6 +122,7 @@ public class action_window {
 				int repair_v = active_person.get_base_repair();
 				if (active_person.get_tiredness() > 1) {
 					environment.add_shield_hp(repair_v);
+					active_person.work();
 					textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
 				}else {
 					textPane_1.setText(active_person.get_name() + " doesn't have enough energy to repair the shields!");
@@ -152,6 +153,7 @@ public class action_window {
 				active_person = crew.Members.get(comboBox.getSelectedIndex());
 				if (active_person.get_tiredness() > 1) {
 					textPane_1.setText(active_person.get_name() + " began a search!\n...\n...");
+					active_person.work();
 					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
 					
 				} else {

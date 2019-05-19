@@ -47,7 +47,12 @@ public class member {
 		return type.get_base_repair();
 	}
 	
+	
 	public void sleep() {
 		tiredness += 3;
+	}
+	
+	public void work() {
+		tiredness -= 1;
 	}
 }

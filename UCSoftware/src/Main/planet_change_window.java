@@ -94,6 +94,8 @@ public class planet_change_window {
 				if (active_person1 != active_person2) {
 					if (active_person1.get_tiredness() > 1 && active_person2.get_tiredness() > 1 ) {
 						textPane.setText("good");
+						active_person1.work();
+						active_person2.work();
 						// change planet here
 					}else {
 						textPane.setText("One of these members is too tired to pilot the ship!");
@@ -103,6 +105,7 @@ public class planet_change_window {
 				}
 
 			}
+			
 		});
 		btnLaunch.setBounds(156, 108, 89, 31);
 		frame.getContentPane().add(btnLaunch);
