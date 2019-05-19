@@ -68,18 +68,22 @@ public class Crew_setup_window {
 		lblClass.setBounds(10, 43, 46, 14);
 		frame.getContentPane().add(lblClass);
 		
+		// member 1 class selection box
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(10, 68, 91, 20);
 		frame.getContentPane().add(comboBox);
 		
+		// member 2 class selection 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(10, 99, 91, 20);
 		frame.getContentPane().add(comboBox_1);
 		
+		// member 3 class selection 
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setBounds(10, 132, 91, 20);
 		frame.getContentPane().add(comboBox_2);
 		
+		// member 4 class selection 
 		JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.setBounds(10, 163, 91, 20);
 		frame.getContentPane().add(comboBox_3);
@@ -93,34 +97,40 @@ public class Crew_setup_window {
 			comboBox_3.addItem(s.get_type_name());
 		}
 		
+		// text label
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(113, 43, 46, 14);
 		frame.getContentPane().add(lblName);
 		
+		// member 1 name entry
 		txtDaniel = new JTextField();
 		txtDaniel.setText("Daniel");
 		txtDaniel.setBounds(111, 68, 86, 20);
 		frame.getContentPane().add(txtDaniel);
 		txtDaniel.setColumns(10);
 		
+		// member 2 name entry
 		txtDavid = new JTextField();
 		txtDavid.setText("David");
 		txtDavid.setColumns(10);
 		txtDavid.setBounds(111, 99, 86, 20);
 		frame.getContentPane().add(txtDavid);
 		
+		// member 3 name entry, if name isn't changed then member isn't added
 		txtTest = new JTextField();
 		txtTest.setText("Enter a name!");
 		txtTest.setColumns(10);
 		txtTest.setBounds(111, 132, 86, 20);
 		frame.getContentPane().add(txtTest);
 		
+		// member 4 name entry, if name isn't changed then member isn't added
 		txtTest_1 = new JTextField();
 		txtTest_1.setText("Enter a name!");
 		txtTest_1.setColumns(10);
 		txtTest_1.setBounds(111, 163, 86, 20);
 		frame.getContentPane().add(txtTest_1);
 		
+		// text label
 		JLabel lblInformation = new JLabel("Information:");
 		lblInformation.setBounds(207, 43, 100, 14);
 		frame.getContentPane().add(lblInformation);
@@ -137,6 +147,7 @@ public class Crew_setup_window {
 		txtpnEachClassIs.setBounds(207, 68, 225, 181);
 		frame.getContentPane().add(txtpnEachClassIs);
 		
+		// text label
 		JLabel lblNameYourShip = new JLabel("Name your ship:");
 		lblNameYourShip.setBounds(10, 221, 117, 14);
 		frame.getContentPane().add(lblNameYourShip);

@@ -54,6 +54,7 @@ public class planet_change_window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		// button to return to the action screen
 		JButton btnLeave = new JButton("Leave");
 		btnLeave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,10 +65,12 @@ public class planet_change_window {
 		btnLeave.setBounds(149, 308, 107, 49);
 		frame.getContentPane().add(btnLeave);
 		
+		// text label
 		JLabel lblSelectWhoShould = new JLabel("Select two crew members to pilot the ship");
 		lblSelectWhoShould.setBounds(129, 11, 272, 14);
 		frame.getContentPane().add(lblSelectWhoShould);
 		
+		// combo box to select the first member to pilot
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(106, 67, 76, 20);
 		frame.getContentPane().add(comboBox);
@@ -75,6 +78,7 @@ public class planet_change_window {
 			comboBox.addItem(item.get_name());
 		}
 		
+		// combo box to select the second member to pilot
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(229, 67, 76, 20);
 		frame.getContentPane().add(comboBox_1);
@@ -82,10 +86,12 @@ public class planet_change_window {
 			comboBox_1.addItem(item.get_name());
 		}
 		
+		// text pane displaying the outcome of the movement
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(59, 150, 308, 131);
 		frame.getContentPane().add(textPane);
 		
+		// button to attempt to launch the ship, launches ship as long as both members have energy and actions remaining
 		JButton btnLaunch = new JButton("Launch!");
 		btnLaunch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

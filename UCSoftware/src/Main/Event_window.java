@@ -55,10 +55,12 @@ public class Event_window {
 		lblEvent.setBounds(193, 40, 46, 14);
 		frame.getContentPane().add(lblEvent);
 		
+		// text pane displaying the event and what happened
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(72, 87, 298, 269);
 		frame.getContentPane().add(textPane);
 		
+		// returns the player to the action window
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

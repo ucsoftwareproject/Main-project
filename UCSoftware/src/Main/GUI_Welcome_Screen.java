@@ -105,6 +105,7 @@ public class GUI_Welcome_Screen {
 		button_1.setBounds(288, 154, 58, 39);
 		frmWelcome.getContentPane().add(button_1);
 		
+		// text label
 		JLabel lblNewLabel = new JLabel("Current days:");
 		lblNewLabel.setBounds(188, 154, 128, 14);
 		frmWelcome.getContentPane().add(lblNewLabel);
