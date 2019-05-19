@@ -81,10 +81,13 @@ public class action_window {
 			comboBox.addItem(item.get_name());
 		}
 		
+		
+		
 		btnViewActiveCrew.setBounds(241, 91, 194, 65);
 		frame.getContentPane().add(btnViewActiveCrew);
 		btnViewActiveCrew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				active_person = crew.Members.get(comboBox.getSelectedIndex());
 				String item = "Name: " + active_person.get_name() + "\nType " + active_person.get_type_name() + 
 				"\nHunger level: " + active_person.get_hunger() + "\nCurrent HP: " + active_person.get_health() 
 				+ "\nEnergy: " + active_person.get_tiredness() + "\nCurrent Status: " + active_person.get_status();
@@ -99,6 +102,15 @@ public class action_window {
 		
 		// lets the crew member sleep
 		JButton btnNewButton = new JButton("Sleep");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				active_person = crew.Members.get(comboBox.getSelectedIndex());
+				active_person.sleep();
+				textPane_1.setText(active_person.get_name() + " took a nap and recovered 3 points of energy.");
+
+				
+			}
+		});
 		btnNewButton.setBounds(21, 224, 121, 65);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -106,9 +118,15 @@ public class action_window {
 		JButton btnRepairShields = new JButton("Repair Shields ");
 		btnRepairShields.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				active_person = crew.Members.get(comboBox.getSelectedIndex());
 				int repair_v = active_person.get_base_repair();
-				environment.add_shield_hp(repair_v);
-				textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+				if (active_person.get_tiredness() > 1) {
+					environment.add_shield_hp(repair_v);
+					textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+				}else {
+					textPane_1.setText(active_person.get_name() + " doesn't have enough energy to repair the shields!");
+				}
+				
 			}
 		});
 		btnRepairShields.setBounds(167, 224, 121, 65);
@@ -123,8 +141,22 @@ public class action_window {
 		frame.getContentPane().add(btnChangePlanet);
 		
 		JButton btnSearchPlanet = new JButton("Search Planet");
+		btnSearchPlanet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				active_person = crew.Members.get(comboBox.getSelectedIndex());
+				if (active_person.get_tiredness() > 1) {
+					textPane_1.setText(active_person.get_name() + " began a search!\n...\n...");
+					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
+					
+				} else {
+					textPane_1.setText(active_person.get_name() + " is too tired to search the planet!");
+				}
+			}
+		});
 		btnSearchPlanet.setBounds(167, 309, 121, 65);
 		frame.getContentPane().add(btnSearchPlanet);
+
+
 		
 		JButton btnUseMedication = new JButton("Use Medication");
 		btnUseMedication.setBounds(314, 309, 121, 65);

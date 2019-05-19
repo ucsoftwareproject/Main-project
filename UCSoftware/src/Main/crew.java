@@ -6,7 +6,7 @@ import java.util.List;
 public class crew {
 
 	private String name;
-	public List<member> Members = new ArrayList<>();
+	public static List<member> Members = new ArrayList<>();
 	private int max_size;
 	private int money = 100;
 	
