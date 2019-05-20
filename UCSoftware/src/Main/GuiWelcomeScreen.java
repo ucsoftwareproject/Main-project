@@ -57,7 +57,7 @@ public class GuiWelcomeScreen {
 		frmWelcome.getContentPane().setLayout(null);
 		
 		JLabel lblWelcomeToSpace = new JLabel("Welcome to Space Explorer!");
-		lblWelcomeToSpace.setBounds(144, 37, 202, 14);
+		lblWelcomeToSpace.setBounds(135, 37, 202, 14);
 		frmWelcome.getContentPane().add(lblWelcomeToSpace);
 		
 		JLabel lblSelectTheNumber = new JLabel("Select the number of in-game days you would like:");
@@ -73,12 +73,12 @@ public class GuiWelcomeScreen {
 				frmWelcome.dispose();
 			}
 		});
-		confirmButton.setBounds(166, 232, 89, 23);
+		confirmButton.setBounds(149, 231, 89, 23);
 		frmWelcome.getContentPane().add(confirmButton);
 		
 		//label displaying current number of days
 		JLabel amountOfDaysLabel = new JLabel("");
-		amountOfDaysLabel.setBounds(212, 179, 16, 14);
+		amountOfDaysLabel.setBounds(190, 179, 16, 14);
 		frmWelcome.getContentPane().add(amountOfDaysLabel);
 		amountOfDaysLabel.setText(environment.getDay());
 
@@ -91,7 +91,7 @@ public class GuiWelcomeScreen {
 				amountOfDaysLabel.setText(environment.getDay());
 			}
 		});
-		removeDayButton.setBounds(97, 154, 58, 39);
+		removeDayButton.setBounds(71, 154, 58, 39);
 		frmWelcome.getContentPane().add(removeDayButton);
 		
 		//adds one day to the day count
@@ -102,12 +102,12 @@ public class GuiWelcomeScreen {
 				amountOfDaysLabel.setText(environment.getDay());
 			}
 		});
-		addDayButton.setBounds(288, 154, 58, 39);
+		addDayButton.setBounds(265, 154, 58, 39);
 		frmWelcome.getContentPane().add(addDayButton);
 		
 		// text label
 		JLabel lblDays = new JLabel("Current days:");
-		lblDays.setBounds(188, 154, 128, 14);
+		lblDays.setBounds(166, 154, 128, 14);
 		frmWelcome.getContentPane().add(lblDays);
 
 
