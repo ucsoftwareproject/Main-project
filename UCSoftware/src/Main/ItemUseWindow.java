@@ -14,8 +14,8 @@ public class ItemUseWindow {
 
 	private JFrame frame;
 	private static GameEnvironment environment;
-	private static crew crew_members;
-	private static member active_person = crew.Members.get(0);
+	private static crew crewMembers;
+	private static member activePerson = crew.Members.get(0);
 	
 	/**
 	 * Launch the application.
@@ -24,7 +24,7 @@ public class ItemUseWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ItemUseWindow window = new ItemUseWindow(environment, crew_members);
+					ItemUseWindow window = new ItemUseWindow(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class ItemUseWindow {
 	 */
 	public ItemUseWindow(GameEnvironment engine, crew crew_info) {
 		environment = engine;
-		crew_members = crew_info;
+		crewMembers = crew_info;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -56,52 +56,52 @@ public class ItemUseWindow {
 		lblChooseAnItem.setBounds(50, 32, 107, 14);
 		frame.getContentPane().add(lblChooseAnItem);
 		
-		JLabel lblChooseWhoShould = new JLabel("Choose who should use it:");
-		lblChooseWhoShould.setBounds(218, 32, 160, 14);
-		frame.getContentPane().add(lblChooseWhoShould);
+		JLabel lblChooseUser = new JLabel("Choose who should use it:");
+		lblChooseUser.setBounds(218, 32, 160, 14);
+		frame.getContentPane().add(lblChooseUser);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(218, 75, 129, 20);
-		frame.getContentPane().add(comboBox);
-		for (member item : environment.Crew.get_members()) {
-			comboBox.addItem(item.get_name());
+		JComboBox userSelect = new JComboBox();
+		userSelect.setBounds(218, 75, 129, 20);
+		frame.getContentPane().add(userSelect);
+		for (member item : environment.Crew.getMembers()) {
+			userSelect.addItem(item.getName());
 		}
 		
-		JButton btnNewButton = new JButton("Leave");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton exitButton = new JButton("Leave");
+		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_action_window();
+				environment.launchActionWindow();
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(148, 341, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		exitButton.setBounds(148, 341, 89, 23);
+		frame.getContentPane().add(exitButton);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(50, 179, 297, 61);
-		frame.getContentPane().add(textPane);
+		JTextPane outputPane = new JTextPane();
+		outputPane.setBounds(50, 179, 297, 61);
+		frame.getContentPane().add(outputPane);
 		
-		JButton btnNewButton_1 = new JButton("Use");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton useItemButton = new JButton("Use");
+		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				if (active_person.get_actions() > 0) {
-					if (active_person.get_tiredness() > 0) {
-						active_person.consume_action();
-						active_person.work();
+				activePerson = crew.Members.get(userSelect.getSelectedIndex());
+				if (activePerson.getActions() > 0) {
+					if (activePerson.getTiredness() > 0) {
+						activePerson.consumeAction();
+						activePerson.work();
 						// USE THE CURRENT ITEM HERE
 					}else {
-						textPane.setText(active_person.get_name() + " is too tired to do that!");
+						outputPane.setText(activePerson.getName() + " is too tired to do that!");
 
 					}
 				}else {
-					textPane.setText(active_person.get_name() + " is out of actions for the day!");
+					outputPane.setText(activePerson.getName() + " is out of actions for the day!");
 				}
 				
 			}
 		});
-		btnNewButton_1.setBounds(148, 280, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		useItemButton.setBounds(148, 280, 89, 23);
+		frame.getContentPane().add(useItemButton);
 		
 
 		

@@ -7,68 +7,68 @@ public class crew {
 
 	private String name;
 	public static List<member> Members = new ArrayList<>();
-	private int max_size;
+	private int maxSize;
 	private int money = 100;
-	private List<item> items_on_ship = new ArrayList<>();
+	private List<item> itemsOnShip = new ArrayList<>();
 	
 	public crew(String Name, int Size) {
 		name = Name;
-		max_size = Size;
+		maxSize = Size;
 	}
 	
 	public void debug() {
 		// for testing
 		System.out.println("Crew:");
 		for (member s: Members) {
-			System.out.println("\t*Name: " + s.get_name() + " Type: " + s.get_type_name());
+			System.out.println("\t*Name: " + s.getName() + " Type: " + s.getTypeName());
 		}
 		System.out.println("\n items on ship");
 		
-		for (item s: items_on_ship) {
-			System.out.println("\t*Item: " + s.get_name());
+		for (item s: itemsOnShip) {
+			System.out.println("\t*Item: " + s.getName());
 		}
 		System.out.println("\n");
 	}
 	
 	
-	public void add_item(item Item) {
-		items_on_ship.add(Item);
+	public void addItem(item Item) {
+		itemsOnShip.add(Item);
 	}
 	
-	public item get_item(int index) {
-		return items_on_ship.get(index);
+	public item getItem(int index) {
+		return itemsOnShip.get(index);
 	}
 	
 	//name functions
-	public void set_name(String Name) {
+	public void setName(String Name) {
 		name = Name;
 	}
-	public String get_name() {
+	public String getName() {
 		return name;
 	}
-	public int get_max_size() {
-		return max_size;
+	public int getMaxSize() {
+		return maxSize;
 	}
 	
 	//members functions
-	public void add_member(member Member) {
+	public void addMember(member Member) {
 		Members.add(Member);
 	}
-	public List<member> get_members() {
+	public List<member> getMembers() {
 		return Members;
 	}
 	
 	//money functions
-	public void set_money(int amount) {
+	public void setMoney(int amount) {
 		money = amount;
 	}
-	public int get_money() {
+	public int getMoney() {
 		return money;
 	}
-	public void add_money(float amount) {
+	public void addMoney(float amount) {
 		money += amount;
 	}
-	public void sub_money(float amount) {
+	public void subMoney(float amount) {
 		money += -amount;
 	}
 		

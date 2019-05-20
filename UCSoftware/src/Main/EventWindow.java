@@ -56,21 +56,21 @@ public class EventWindow {
 		frame.getContentPane().add(lblEvent);
 		
 		// text pane displaying the event and what happened
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(72, 87, 298, 269);
-		frame.getContentPane().add(textPane);
+		JTextPane eventDescriptionPane = new JTextPane();
+		eventDescriptionPane.setBounds(72, 87, 298, 269);
+		frame.getContentPane().add(eventDescriptionPane);
 		
 		// returns the player to the action window
-		JButton btnContinue = new JButton("Continue");
-		btnContinue.addActionListener(new ActionListener() {
+		JButton continueButton = new JButton("Continue");
+		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.end_day();
-				environment.launch_action_window();
+				environment.endDay();
+				environment.launchActionWindow();
 				frame.dispose();
 			}
 		});
-		btnContinue.setBounds(173, 377, 89, 23);
-		frame.getContentPane().add(btnContinue);
+		continueButton.setBounds(173, 377, 89, 23);
+		frame.getContentPane().add(continueButton);
 	}
 
 }

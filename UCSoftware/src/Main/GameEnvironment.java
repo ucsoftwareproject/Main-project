@@ -14,134 +14,133 @@ import java.util.List;
 public class GameEnvironment {
 
 	
-	protected List<item> master_items = new ArrayList<>();
-	private List<crew> Master_crew = new ArrayList<>();
-	protected List<Type2> master_types = new ArrayList<>();
-	public String ship_name;
-	public int shield_hp = 10;
+	protected List<item> masterItems = new ArrayList<>();
+	protected List<Type2> masterTypes = new ArrayList<>();
+	public String shipName;
+	public int shieldHp = 10;
 	private int days = 3;
-	private int current_day = 0;
+	private int currentDay = 0;
 	public crew Crew;
 	public outpost Outpost = new outpost();
 	
 	public item get_random_item() {
 		
 		Random rand = new Random();
-		return master_items.get(rand.nextInt(master_items.size()));
+		return masterItems.get(rand.nextInt(masterItems.size()));
 	}
 	
-	public void spawn_items(int size) {
-		Outpost.clear_items();
+	public void spawnItems(int size) {
+		Outpost.clearItems();
 		int i = 0;
 		while (i < size){
-			Outpost.add_items(get_random_item());
+			Outpost.addItems(get_random_item());
 			i += 1;
 		}
 		
 		// for testing
 		System.out.println("Outpost items:");
-		for (item s: Outpost.get_items()) {
-			System.out.println("\t* " + s.get_name());
+		for (item s: Outpost.getItems()) {
+			System.out.println("\t* " + s.getName());
 		}
 		System.out.println("\n");
 		
 	}
 	
 	public List<item> shop_items(){
-		return Outpost.get_items();
+		return Outpost.getItems();
 	}
 	
 	
 	//outpost 
-	public outpost get_outpost() {
+	public outpost getOutpost() {
 		return Outpost;
 	}
 	
 	// day functions
-	public void set_days(int day) {
+	public void setDays(int day) {
 		days = day;
 	}
-	public void add_day () {
+	public void addDay () {
 		if(days < 10) {
 			days += 1;}
 	}
 	// used for setting the day in the GUI
-	public void minus_day () {
+	public void minusDay () {
 		if(days > 3) {
 			days -= 1;}
 	}
 	
 	//used for ending the day in the game environment
-	public void end_day () {
+	public void endDay () {
 			days -= 1;
-			spawn_items(6);
+			spawnItems(6);
 	}
 	
-	public String get_day() {
+	public String getDay() {
 		return String.valueOf(days);
 	}
 	
-	public int get_shield_hp () {
-		return shield_hp;
+	public int getShieldHP () {
+		return shieldHp;
 	}
 	
-	public void add_shield_hp(int repair_v) {
-		shield_hp += repair_v;
+	public void addShieldHP(int repair_v) {
+		shieldHp += repair_v;
 	}
 	
-	public void damage_shield(int damage_v) {
-		shield_hp -= damage_v;
-	}
-	
-	//prints days for debug
-	public void day_debug() {
-		System.out.println("total days: " + get_day() + "\n");
+	public void damageShield(int damage_v) {
+		shieldHp -= damage_v;
 	}
 	
 	//prints days for debug
-	public void crew_debug() {
+	public void dayDebug() {
+		System.out.println("total days: " + getDay() + "\n");
+	}
+	
+	//prints days for debug
+	public void crewDebug() {
 		Crew.debug();
 	}
 	
 	
 	//builds Master_ items list
-	private void build_items() {
+	private void buildItems() {
 		
 		// food
-		master_items.add( new item("cake", 0, 40f, 0, 100f));
-		master_items.add( new item("rations", 1, 10f, 0, 5f));
-		master_items.add( new item("soda", 2, 1f, 0, 2f));
-		master_items.add( new item("apple", 3, 25f, 0, 50f));
+		masterItems.add( new item("Cake", 0, 40f, 0, 100f));
+		masterItems.add( new item("Rations", 1, 10f, 0, 5f));
+		masterItems.add( new item("Soda", 2, 1f, 0, 2f));
+		masterItems.add( new item("Apple", 3, 25f, 0, 50f));
 		
 		// meds
-		master_items.add( new item("Med Kit", 4, 40f, 1, 100f));
-		master_items.add( new item("band aid", 5, 5f, 1, 10f));
-		master_items.add( new item("pain killer", 6, 10f, 1, 15f));
-		master_items.add( new item("bandage", 7, 25f, 1, 50f));
+		masterItems.add( new item("Med-Kit", 4, 40f, 1, 100f));
+		masterItems.add( new item("Bandaid", 5, 5f, 1, 10f));
+		masterItems.add( new item("Pain killer", 6, 10f, 1, 15f));
+		masterItems.add( new item("Bandage", 7, 25f, 1, 50f));
 		
 		
 		
 		// for testing
 		System.out.println("Master items:");
-		for (item s: master_items) {
-			System.out.println("\t* " + s.get_name());
+		for (item s: masterItems) {
+			System.out.println("\t* " + s.getName());
 		}
 		System.out.println("\n");
 	}
 		
-	private void build_types() {
+	private void buildTypes() {
 		
-		master_types.add(new Type2("ENGINEER"));
-		master_types.add(new Type2("ATHLETE"));
-		master_types.add(new Type2("SCIENTIST"));
-		master_types.add(new Type2("PUSHOVER"));
-		master_types.add(new Type2("CYBORG"));
-		master_types.add(new Type2("DOCTOR"));
+		masterTypes.add(new Type2("ENGINEER"));
+		masterTypes.add(new Type2("ATHLETE"));
+		masterTypes.add(new Type2("SCIENTIST"));
+		masterTypes.add(new Type2("PUSHOVER"));
+		masterTypes.add(new Type2("CYBORG"));
+		masterTypes.add(new Type2("DOCTOR"));
 		
 		// for testing
 		System.out.println("Master types:");
-		for (Type2 s: master_types) {
-			System.out.println("\t* " + s.get_type_name());
+		for (Type2 s: masterTypes) {
+			System.out.println("\t* " + s.getTypeName());
 		}
 		System.out.println("\n");
 	}
@@ -150,18 +149,18 @@ public class GameEnvironment {
 	public GameEnvironment() {
 		
 		//builds master lists
-		build_items();
-		build_types();
+		buildItems();
+		buildTypes();
 		
 		//make crew
 		Crew = new crew("temp", 4);
 		//spawn shop
-		spawn_items(6);
+		spawnItems(6);
 	}
 	
-	public void add_member(String name, Type2 Type) {
+	public void addMember(String name, Type2 Type) {
 		member Member = new member(name, Type);
-		Crew.add_member(Member);
+		Crew.addMember(Member);
 	}
 	
 	
@@ -169,48 +168,48 @@ public class GameEnvironment {
 	
 	
 	//sets the ships name
-	public void set_ship_name(String name) {
-		ship_name = name;
+	public void setShipName(String name) {
+		shipName = name;
 	}
 	
-	public String get_ship_name() {
-		return(ship_name);
+	public String getShipName() {
+		return(shipName);
 	}
 	
 	//sets up the GUI
-	public void launchMainScreen() {
+	public void launchMainWindow() {
 		GuiWelcomeScreen mainWindow = new GuiWelcomeScreen(this);
 	}
 	
-	public void launchcrew_screen() {
+	public void launchCrewWindow() {
 		CrewSetupWindow crew_window = new CrewSetupWindow(this);
 	}
 	
-	public void launchconfirmationscreen() {
+	public void launchConfirmationScreen() {
 		ConfirmationScreen confirm_screen = new ConfirmationScreen(this, Crew);
 	}
 	
-	public void launch_action_window() {
+	public void launchActionWindow() {
 		ActionWindow action = new ActionWindow(this, Crew);
 	}
 	
-	public void launch_outpost() {
+	public void launchOutpost() {
 		OutpostWindow outpost = new OutpostWindow(this);
 	}
 	
-	public void launch_event() {
+	public void launchEvent() {
 		EventWindow event = new EventWindow(this);
 	}
 	
-	public void launch_failure() {
+	public void launchFailure() {
 		FailureWindow fail = new FailureWindow();
 	}
 	
-	public void launch_planet_changer() {
+	public void launchPlanetChanger() {
 		PlanetChangeWindow changer = new PlanetChangeWindow(this, Crew);
 	}
 	
-	public void launch_item_use_window() {
+	public void launchItemUseWindow() {
 		ItemUseWindow item = new ItemUseWindow(this, Crew);
 	}
 	
@@ -222,7 +221,7 @@ public class GameEnvironment {
 		// TODO Auto-generated method stub
 		
 		GameEnvironment engine = new GameEnvironment();
-		engine.launchMainScreen();
+		engine.launchMainWindow();
 		
 		
 	}

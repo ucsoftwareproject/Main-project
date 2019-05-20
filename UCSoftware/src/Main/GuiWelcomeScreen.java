@@ -65,50 +65,50 @@ public class GuiWelcomeScreen {
 		frmWelcome.getContentPane().add(lblSelectTheNumber);
 		
 		//moves to the next page
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.addActionListener(new ActionListener() {
+		JButton confirmButton = new JButton("Confirm");
+		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				environment.launchcrew_screen();
-				environment.day_debug();
+				environment.launchCrewWindow();
+				environment.dayDebug();
 				frmWelcome.dispose();
 			}
 		});
-		btnConfirm.setBounds(166, 232, 89, 23);
-		frmWelcome.getContentPane().add(btnConfirm);
+		confirmButton.setBounds(166, 232, 89, 23);
+		frmWelcome.getContentPane().add(confirmButton);
 		
 		//label displaying current number of days
-		JLabel label = new JLabel("");
-		label.setBounds(212, 179, 16, 14);
-		frmWelcome.getContentPane().add(label);
-		label.setText(environment.get_day());
+		JLabel amountOfDaysLabel = new JLabel("");
+		amountOfDaysLabel.setBounds(212, 179, 16, 14);
+		frmWelcome.getContentPane().add(amountOfDaysLabel);
+		amountOfDaysLabel.setText(environment.getDay());
 
 		
 		//takes away a day from the day count
-		JButton button = new JButton("-");
-		button.addActionListener(new ActionListener() {
+		JButton removeDayButton = new JButton("-");
+		removeDayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.minus_day();
-				label.setText(environment.get_day());
+				environment.minusDay();
+				amountOfDaysLabel.setText(environment.getDay());
 			}
 		});
-		button.setBounds(97, 154, 58, 39);
-		frmWelcome.getContentPane().add(button);
+		removeDayButton.setBounds(97, 154, 58, 39);
+		frmWelcome.getContentPane().add(removeDayButton);
 		
 		//adds one day to the day count
-		JButton button_1 = new JButton("+");
-		button_1.addActionListener(new ActionListener() {
+		JButton addDayButton = new JButton("+");
+		addDayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.add_day();
-				label.setText(environment.get_day());
+				environment.addDay();
+				amountOfDaysLabel.setText(environment.getDay());
 			}
 		});
-		button_1.setBounds(288, 154, 58, 39);
-		frmWelcome.getContentPane().add(button_1);
+		addDayButton.setBounds(288, 154, 58, 39);
+		frmWelcome.getContentPane().add(addDayButton);
 		
 		// text label
-		JLabel lblNewLabel = new JLabel("Current days:");
-		lblNewLabel.setBounds(188, 154, 128, 14);
-		frmWelcome.getContentPane().add(lblNewLabel);
+		JLabel lblDays = new JLabel("Current days:");
+		lblDays.setBounds(188, 154, 128, 14);
+		frmWelcome.getContentPane().add(lblDays);
 
 
 

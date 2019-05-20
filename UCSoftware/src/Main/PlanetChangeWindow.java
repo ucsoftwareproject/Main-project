@@ -14,9 +14,9 @@ public class PlanetChangeWindow {
 
 	private JFrame frame;
 	private static GameEnvironment environment;
-	private static crew crew_members;
-	private static member active_person1;
-	private static member active_person2;
+	private static crew crewMembers;
+	private static member activePerson1;
+	private static member activePerson2;
 
 
 	/**
@@ -26,7 +26,7 @@ public class PlanetChangeWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlanetChangeWindow window = new PlanetChangeWindow(environment, crew_members);
+					PlanetChangeWindow window = new PlanetChangeWindow(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,9 +38,9 @@ public class PlanetChangeWindow {
 	/**
 	 * Create the application.
 	 */
-	public PlanetChangeWindow(GameEnvironment engine, crew crew_info) {
+	public PlanetChangeWindow(GameEnvironment engine, crew crewInfo) {
 		environment = engine;
-		crew_members = crew_info;
+		crewMembers = crewInfo;
 		initialize();
 		frame.setVisible(true);		
 	}
@@ -55,15 +55,15 @@ public class PlanetChangeWindow {
 		frame.getContentPane().setLayout(null);
 		
 		// button to return to the action screen
-		JButton btnLeave = new JButton("Leave");
-		btnLeave.addActionListener(new ActionListener() {
+		JButton leaveButton = new JButton("Leave");
+		leaveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_action_window();
+				environment.launchActionWindow();
 				frame.dispose();
 			}
 		});
-		btnLeave.setBounds(149, 308, 107, 49);
-		frame.getContentPane().add(btnLeave);
+		leaveButton.setBounds(149, 308, 107, 49);
+		frame.getContentPane().add(leaveButton);
 		
 		// text label
 		JLabel lblSelectWhoShould = new JLabel("Select two crew members to pilot the ship");
@@ -71,56 +71,56 @@ public class PlanetChangeWindow {
 		frame.getContentPane().add(lblSelectWhoShould);
 		
 		// combo box to select the first member to pilot
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(106, 67, 76, 20);
-		frame.getContentPane().add(comboBox);
-		for (member item : environment.Crew.get_members()) {
-			comboBox.addItem(item.get_name());
+		JComboBox userOneSelect = new JComboBox();
+		userOneSelect.setBounds(106, 67, 76, 20);
+		frame.getContentPane().add(userOneSelect);
+		for (member item : environment.Crew.getMembers()) {
+			userOneSelect.addItem(item.getName());
 		}
 		
 		// combo box to select the second member to pilot
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(229, 67, 76, 20);
-		frame.getContentPane().add(comboBox_1);
-		for (member item : environment.Crew.get_members()) {
-			comboBox_1.addItem(item.get_name());
+		JComboBox userTwoSelect = new JComboBox();
+		userTwoSelect.setBounds(229, 67, 76, 20);
+		frame.getContentPane().add(userTwoSelect);
+		for (member item : environment.Crew.getMembers()) {
+			userTwoSelect.addItem(item.getName());
 		}
 		
 		// text pane displaying the outcome of the movement
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(59, 150, 308, 131);
-		frame.getContentPane().add(textPane);
+		JTextPane outputPane = new JTextPane();
+		outputPane.setBounds(59, 150, 308, 131);
+		frame.getContentPane().add(outputPane);
 		
 		// button to attempt to launch the ship, launches ship as long as both members have energy and actions remaining
-		JButton btnLaunch = new JButton("Launch!");
-		btnLaunch.addActionListener(new ActionListener() {
+		JButton launchButton = new JButton("Launch!");
+		launchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				active_person1 = crew.Members.get(comboBox.getSelectedIndex());
-				active_person2 = crew.Members.get(comboBox_1.getSelectedIndex());
-				if (active_person1 != active_person2) {
-					if (active_person1.get_tiredness() > 0 && active_person2.get_tiredness() > 0 ) {
-						if (active_person1.get_actions() > 0 && active_person2.get_actions() > 0) {
-							textPane.setText("good");
-							active_person1.work();
-							active_person2.work();
-							active_person1.consume_action();
-							active_person2.consume_action();
+				activePerson1 = crew.Members.get(userOneSelect.getSelectedIndex());
+				activePerson2 = crew.Members.get(userTwoSelect.getSelectedIndex());
+				if (activePerson1 != activePerson2) {
+					if (activePerson1.getTiredness() > 0 && activePerson2.getTiredness() > 0 ) {
+						if (activePerson1.getActions() > 0 && activePerson2.getActions() > 0) {
+							outputPane.setText("good");
+							activePerson1.work();
+							activePerson2.work();
+							activePerson1.consumeAction();
+							activePerson2.consumeAction();
 							// change planet here
 						}else {
-							textPane.setText("One of these members is out of actions for the day!");
+							outputPane.setText("One of these members is out of actions for the day!");
 						}
 						
 					}else {
-						textPane.setText("One of these members is too tired to pilot the ship!");
+						outputPane.setText("One of these members is too tired to pilot the ship!");
 					}
 				}else {
-					textPane.setText("You need two seperate people to pilot the ship!");
+					outputPane.setText("You need two seperate people to pilot the ship!");
 				}
 
 			}
 			
 		});
-		btnLaunch.setBounds(156, 108, 89, 31);
-		frame.getContentPane().add(btnLaunch);
+		launchButton.setBounds(156, 108, 89, 31);
+		frame.getContentPane().add(launchButton);
 	}
 }

@@ -17,43 +17,43 @@ public class member {
 	}
 
 	
-	public String get_name() {
+	public String getName() {
 		return name;
 	}
 	
 	//returns the current health of the crew member
-	public float get_health(){
+	public float getHealth(){
 		return health;
 	}
 	
 	//gets the current status of the crew member
-	public boolean get_status() {
+	public boolean getStatus() {
 		return sick;
 	}
 	
 	//gets the tiredness of the crew member
-	public float get_tiredness() {
+	public float getTiredness() {
 		return tiredness;
 	}
 	
 	//gets the hunger level of the crew member
-	public float get_hunger() {
+	public float getHunger() {
 		return hunger;
 	}
 	
-	public String get_type_name() {
-		return type.get_type_name();
+	public String getTypeName() {
+		return type.getTypeName();
 	}
 	
-	public int get_base_repair() {
-		return type.get_base_repair();
+	public int getBaseRepair() {
+		return type.getBaseRepair();
 	}
 	
-	public void set_actions(int value) {
+	public void setActions(int value) {
 		actions = value;
 	}
 	
-	public float get_actions(){
+	public float getActions(){
 		return actions;
 	}
 	
@@ -65,7 +65,7 @@ public class member {
 		tiredness -= 1;
 	}
 	
-	public void consume_action() {
+	public void consumeAction() {
 		actions -= 1;
 	}
 }

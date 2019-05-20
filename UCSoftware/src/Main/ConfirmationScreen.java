@@ -13,7 +13,7 @@ public class ConfirmationScreen {
 
 	private JFrame frame;
 	private static GameEnvironment environment;
-	private static crew crew_members;
+	private static crew crewMembers;
 
 
 	/**
@@ -23,7 +23,7 @@ public class ConfirmationScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmationScreen window = new ConfirmationScreen(environment, crew_members);
+					ConfirmationScreen window = new ConfirmationScreen(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class ConfirmationScreen {
 	
 	public ConfirmationScreen(GameEnvironment engine, crew crew_info) {
 			environment = engine;
-			crew_members = crew_info;
+			crewMembers = crew_info;
 			initialize();
 			frame.setVisible(true);
 		
@@ -54,20 +54,20 @@ public class ConfirmationScreen {
 		frame.getContentPane().setLayout(null);
 		
 		// text label
-		JLabel lblAreTheseDetails = new JLabel("Confirm your information");
-		lblAreTheseDetails.setBounds(106, 25, 179, 14);
-		frame.getContentPane().add(lblAreTheseDetails);
+		JLabel lblConfirmInfo = new JLabel("Confirm your information");
+		lblConfirmInfo.setBounds(106, 25, 179, 14);
+		frame.getContentPane().add(lblConfirmInfo);
 		
 		// ship name label
-		JLabel lblShipNamr = new JLabel("Ship Name:");
-		lblShipNamr.setBounds(10, 66, 70, 14);
-		frame.getContentPane().add(lblShipNamr);
+		JLabel lblShipName = new JLabel("Ship Name:");
+		lblShipName.setBounds(10, 66, 70, 14);
+		frame.getContentPane().add(lblShipName);
 		
 		// label displaying the name of the ship
-		JLabel ship_label = new JLabel("");
-		ship_label .setBounds(122, 66, 179, 14);
-		frame.getContentPane().add(ship_label );
-		ship_label .setText(environment.get_ship_name());
+		JLabel lblUserShipName = new JLabel("");
+		lblUserShipName .setBounds(122, 66, 179, 14);
+		frame.getContentPane().add(lblUserShipName );
+		lblUserShipName .setText(environment.getShipName());
 		
 		// crew member label
 		JLabel lblCrewMembers = new JLabel("Crew Members:");
@@ -75,15 +75,15 @@ public class ConfirmationScreen {
 		frame.getContentPane().add(lblCrewMembers);
 		
 		// text pane displaying each member of the crew and their class.
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(122, 136, 179, 119);
-		frame.getContentPane().add(textPane);
+		JTextPane gameInformationPane = new JTextPane();
+		gameInformationPane.setBounds(122, 136, 179, 119);
+		frame.getContentPane().add(gameInformationPane);
 		String item = "";
-		for (member s: crew_members.get_members()) {
-			item += ("Name: " + s.get_name() + " Type: " + s.get_type_name() + "\n");
+		for (member s: crewMembers.getMembers()) {
+			item += ("Name: " + s.getName() + " Type: " + s.getTypeName() + "\n");
 		}
-		textPane.setText(item);
-		frame.getContentPane().add(textPane);
+		gameInformationPane.setText(item);
+		frame.getContentPane().add(gameInformationPane);
 		
 		//number of days label
 		JLabel lblNumberOfDays = new JLabel("Number of days:");
@@ -91,21 +91,21 @@ public class ConfirmationScreen {
 		frame.getContentPane().add(lblNumberOfDays);
 		
 		// displays the number of days
-		JLabel label = new JLabel("");
-		label.setBounds(122, 101, 46, 14);
-		frame.getContentPane().add(label);
-		label.setText(environment.get_day());
+		JLabel lblUserdays = new JLabel("");
+		lblUserdays.setBounds(122, 101, 46, 14);
+		frame.getContentPane().add(lblUserdays);
+		lblUserdays.setText(environment.getDay());
 		
 		//confirms information and goes to the next screen
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.addActionListener(new ActionListener() {
+		JButton confirmationButton = new JButton("Confirm");
+		confirmationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_action_window();
+				environment.launchActionWindow();
 				frame.dispose();
 			}
 		});
-		btnConfirm.setBounds(130, 278, 89, 23);
-		frame.getContentPane().add(btnConfirm);
+		confirmationButton.setBounds(130, 278, 89, 23);
+		frame.getContentPane().add(confirmationButton);
 		
 	}
 }

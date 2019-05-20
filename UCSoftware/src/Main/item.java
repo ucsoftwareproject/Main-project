@@ -25,22 +25,22 @@ public class item {
 	}
 	
 	//gets the cost of an item
-	public float get_cost() {
+	public float getCost() {
 		return cost;
 	}
 	
 	//gets the type of item
-	public float get_type() {
+	public float getType() {
 		return type;
 	}
 	
-	//gets the type of item
-	public String get_name() {
+	//gets the name of item
+	public String getName() {
 		return name;
 	}
 	
-	//gets the type of item
-	public float get_improvement() {
+	//gets the quality of item
+	public float getImprovement() {
 		return improvement;
 	}
 }

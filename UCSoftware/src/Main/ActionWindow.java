@@ -15,8 +15,8 @@ public class ActionWindow {
 
 	private JFrame frame;
 	private static GameEnvironment environment;
-	private static crew crew_members;
-	private static member active_person = crew.Members.get(0);
+	private static crew crewMembers;
+	private static member activePerson = crew.Members.get(0);
 
 	/**
 	 * Launch the application.
@@ -25,7 +25,7 @@ public class ActionWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ActionWindow window = new ActionWindow(environment, crew_members);
+					ActionWindow window = new ActionWindow(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class ActionWindow {
 	 */
 	public ActionWindow(GameEnvironment engine, crew crew_info) {
 		environment = engine;
-		crew_members = crew_info;
+		crewMembers = crew_info;
 		initialize();
 		frame.setVisible(true);
 
@@ -58,180 +58,180 @@ public class ActionWindow {
 		lblActiveCrewMember.setBounds(20, 45, 154, 14);
 		frame.getContentPane().add(lblActiveCrewMember);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(472, 21, 251, 169);
-		frame.getContentPane().add(textPane);
+		JTextPane outputPane1 = new JTextPane();
+		outputPane1.setBounds(472, 21, 251, 169);
+		frame.getContentPane().add(outputPane1);
 		
 		// button to display the current health and name of the ship
-		JButton btnViewShipStatus = new JButton("View Ship Status");
-		btnViewShipStatus.addActionListener(new ActionListener() {
+		JButton viewShipStatusButton = new JButton("View Ship Status");
+		viewShipStatusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textPane.setText("Ship Name: " + environment.get_ship_name() + "\nShield HP: " + environment.get_shield_hp());
+				outputPane1.setText("Ship Name: " + environment.getShipName() + "\nShield HP: " + environment.getShieldHP());
 			}
 		});
-		btnViewShipStatus.setBounds(20, 91, 194, 65);
-		frame.getContentPane().add(btnViewShipStatus);
+		viewShipStatusButton.setBounds(20, 91, 194, 65);
+		frame.getContentPane().add(viewShipStatusButton);
 		
 		// label displaying the name of the active member and how many actions they have left
-		JLabel lblCrewMemberHas = new JLabel(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
+		JLabel lblCrewMemberHas = new JLabel(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
 		lblCrewMemberHas.setBounds(21, 187, 366, 14);
 		frame.getContentPane().add(lblCrewMemberHas);
 		
 		// selects the current crew member
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(184, 42, 143, 20);
-		frame.getContentPane().add(comboBox);
-		for (member item : environment.Crew.get_members()) {
-			comboBox.addItem(item.get_name());
+		JComboBox memberSelect = new JComboBox();
+		memberSelect.setBounds(184, 42, 143, 20);
+		frame.getContentPane().add(memberSelect);
+		for (member item : environment.Crew.getMembers()) {
+			memberSelect.addItem(item.getName());
 		}
 		
 		// button that displays the statistics of the currently selected crew member
-		JButton btnViewActiveCrew = new JButton("View active crew member status");
-		btnViewActiveCrew.setBounds(241, 91, 194, 65);
-		frame.getContentPane().add(btnViewActiveCrew);
-		btnViewActiveCrew.addActionListener(new ActionListener() {
+		JButton viewActiveCrewButton = new JButton("View active crew member status");
+		viewActiveCrewButton.setBounds(241, 91, 194, 65);
+		frame.getContentPane().add(viewActiveCrewButton);
+		viewActiveCrewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				String item = "Name: " + active_person.get_name() + "\nType " + active_person.get_type_name() + 
-				"\nHunger level: " + active_person.get_hunger() + "\nCurrent HP: " + active_person.get_health() 
-				+ "\nEnergy: " + active_person.get_tiredness() + "\nCurrent Status: " + active_person.get_status();
-				textPane.setText(item);
-				frame.getContentPane().add(textPane);
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
+				String item = "Name: " + activePerson.getName() + "\nType " + activePerson.getTypeName() + 
+				"\nHunger level: " + activePerson.getHunger() + "\nCurrent HP: " + activePerson.getHealth() 
+				+ "\nEnergy: " + activePerson.getTiredness() + "\nCurrent Status: " + activePerson.getStatus();
+				outputPane1.setText(item);
+				frame.getContentPane().add(outputPane1);
 			}
 		});
 		
 		// frame to display information on either the ship or character
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBounds(472, 224, 251, 141);
-		frame.getContentPane().add(textPane_1);
+		JTextPane outputPane2 = new JTextPane();
+		outputPane2.setBounds(472, 224, 251, 141);
+		frame.getContentPane().add(outputPane2);
 		
 		// button to let the crew member sleep, as long as they have enough remaining actions for the day
-		JButton btnNewButton = new JButton("Sleep");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton sleepButton = new JButton("Sleep");
+		sleepButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				if (active_person.get_actions() > 0) {
-					active_person.consume_action();
-					lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
-					active_person.sleep();
-					textPane_1.setText(active_person.get_name() + " took a nap and recovered 3 points of energy.");
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
+				if (activePerson.getActions() > 0) {
+					activePerson.consumeAction();
+					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
+					activePerson.sleep();
+					outputPane2.setText(activePerson.getName() + " took a nap and recovered 3 points of energy.");
 				}else {
-					textPane_1.setText(active_person.get_name() + " is out of actions for the day!.");
+					outputPane2.setText(activePerson.getName() + " is out of actions for the day!.");
 				}
 				
 			}
 		});
-		btnNewButton.setBounds(21, 224, 121, 65);
-		frame.getContentPane().add(btnNewButton);
+		sleepButton.setBounds(21, 224, 121, 65);
+		frame.getContentPane().add(sleepButton);
 		
 		// button to repair the shields by the current active members shield repair 
 		// stat, as long as the member has enough energy and actions for the day remaining
-		JButton btnRepairShields = new JButton("Repair Shields ");
-		btnRepairShields.addActionListener(new ActionListener() {
+		JButton repairShieldsButton = new JButton("Repair Shields ");
+		repairShieldsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				int repair_v = active_person.get_base_repair();
-				if (active_person.get_tiredness() > 0) {
-					if (active_person.get_actions() > 0) {
-						environment.add_shield_hp(repair_v);
-						active_person.work();
-						active_person.consume_action();
-						lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
-						textPane_1.setText(active_person.get_name() + " repaired the shields for " + active_person.get_base_repair() + " points.");
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
+				int repair_v = activePerson.getBaseRepair();
+				if (activePerson.getTiredness() > 0) {
+					if (activePerson.getActions() > 0) {
+						environment.addShieldHP(repair_v);
+						activePerson.work();
+						activePerson.consumeAction();
+						lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
+						outputPane2.setText(activePerson.getName() + " repaired the shields for " + activePerson.getBaseRepair() + " points.");
 					} else {
-						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
+						outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
 
 					}
 
 				}else {
-					textPane_1.setText(active_person.get_name() + " doesn't have enough energy to repair the shields!");
+					outputPane2.setText(activePerson.getName() + " doesn't have enough energy to repair the shields!");
 				}
 				
 			}
 		});
-		btnRepairShields.setBounds(152, 224, 121, 65);
-		frame.getContentPane().add(btnRepairShields);
+		repairShieldsButton.setBounds(152, 224, 121, 65);
+		frame.getContentPane().add(repairShieldsButton);
 		
 		// button to let the currently active member eat food, restoring hunger. (NO FUNCTION YET)
-		JButton btnEatFood = new JButton("Use an item");
-		btnEatFood.addActionListener(new ActionListener() {
+		JButton eatFoodButton = new JButton("Use an item");
+		eatFoodButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				environment.launch_item_use_window();
+				environment.launchItemUseWindow();
 			}
 		});
-		btnEatFood.setBounds(21, 300, 168, 65);
-		frame.getContentPane().add(btnEatFood);
+		eatFoodButton.setBounds(21, 300, 168, 65);
+		frame.getContentPane().add(eatFoodButton);
 		
 		// opens the planet changing menu
-		JButton btnChangePlanet = new JButton("Change Planet");
-		btnChangePlanet.addActionListener(new ActionListener() {
+		JButton changePlanetButton = new JButton("Change Planet");
+		changePlanetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_planet_changer();
+				environment.launchPlanetChanger();
 				frame.dispose();
 			}
 		});
-		btnChangePlanet.setBounds(236, 300, 168, 65);
-		frame.getContentPane().add(btnChangePlanet);
+		changePlanetButton.setBounds(236, 300, 168, 65);
+		frame.getContentPane().add(changePlanetButton);
 		
 		// button that lets the currently active crew member search the planet for parts, as long as they have enough energy and remaining moves for the day
-		JButton btnSearchPlanet = new JButton("Search Planet");
-		btnSearchPlanet.addActionListener(new ActionListener() {
+		JButton searchPlanetButton = new JButton("Search Planet");
+		searchPlanetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				active_person = crew.Members.get(comboBox.getSelectedIndex());
-				if (active_person.get_tiredness() > 0) {
-					if (active_person.get_actions() > 0) {
-					textPane_1.setText(active_person.get_name() + " began a search!\n...\n...");
-					active_person.work();
-					active_person.consume_action();
-					lblCrewMemberHas.setText(active_person.get_name() + " has " + active_person.get_actions() + " actions left, what should they do?");
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
+				if (activePerson.getTiredness() > 0) {
+					if (activePerson.getActions() > 0) {
+					outputPane2.setText(activePerson.getName() + " began a search!\n...\n...");
+					activePerson.work();
+					activePerson.consumeAction();
+					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
 					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
 					}else {
-						textPane_1.setText(active_person.get_name() + " is out of actions for the day!");
+						outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
 					}
 				} else {
-					textPane_1.setText(active_person.get_name() + " is too tired to search the planet!");
+					outputPane2.setText(activePerson.getName() + " is too tired to search the planet!");
 				}
 			}
 		});
-		btnSearchPlanet.setBounds(283, 224, 121, 65);
-		frame.getContentPane().add(btnSearchPlanet);
+		searchPlanetButton.setBounds(283, 224, 121, 65);
+		frame.getContentPane().add(searchPlanetButton);
 
 		
 		// button that takes the player to the outpost
-		JButton btnNewButton_1 = new JButton("Visit the outpost");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton visitOutpostButton = new JButton("Visit the outpost");
+		visitOutpostButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launch_outpost();
+				environment.launchOutpost();
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(21, 409, 206, 56);
-		frame.getContentPane().add(btnNewButton_1);
+		visitOutpostButton.setBounds(21, 409, 206, 56);
+		frame.getContentPane().add(visitOutpostButton);
 		
 		// ends the day, triggering a random event and restoring each crew members moves to 3
-		JButton btnEndTheDay = new JButton("End the day");
-		btnEndTheDay.addActionListener(new ActionListener() {
+		JButton endTheDayButton = new JButton("End the day");
+		endTheDayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String day = environment.get_day();
+				String day = environment.getDay();
 				if (Integer.valueOf(day) > 1) {
-					for (member s: crew_members.get_members()) {
-						s.set_actions(3);
+					for (member s: crewMembers.getMembers()) {
+						s.setActions(3);
 					}
-					environment.launch_event();
+					environment.launchEvent();
 					}else {
-						environment.launch_failure();
+						environment.launchFailure();
 					}
 				frame.dispose();
 			}
 		});
-		btnEndTheDay.setBounds(517, 409, 206, 56);
-		frame.getContentPane().add(btnEndTheDay);
+		endTheDayButton.setBounds(517, 409, 206, 56);
+		frame.getContentPane().add(endTheDayButton);
 		
 		// label displaying remaining days
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setText("There are " + environment.get_day() + " days remaining.");
-		lblNewLabel.setBounds(20, 11, 233, 14);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel daysLabel = new JLabel("New label");
+		daysLabel.setText("There are " + environment.getDay() + " days remaining.");
+		daysLabel.setBounds(20, 11, 233, 14);
+		frame.getContentPane().add(daysLabel);
 		
 	}
 }

@@ -10,20 +10,20 @@ public class outpost {
 	protected List<item> items = new ArrayList<>();
 	
 	//gets the distance from the ships location
-	public int get_distance() {
+	public int getDistance() {
 		return distance;
 	}
 	
 	
-	public void add_items(item Item) {
+	public void addItems(item Item) {
 		items.add(Item);
 	}
 	
-	public void clear_items() {
+	public void clearItems() {
 		items.clear();
 	}
 	
-	public List<item> get_items(){
+	public List<item> getItems(){
 		return items;
 	}
 }

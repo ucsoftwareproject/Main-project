@@ -1,6 +1,6 @@
 package Main;
 
-enum member_class{
+enum MemberClass{
     ENGINEER, ATHLETE, SCIENTIST, PUSHOVER, CYBORG, DOCTOR
 }
 //Engineers are the best at repairing, and decent overall
@@ -11,82 +11,82 @@ enum member_class{
 //Doctors have good energy and health but are bad at repairs (maybe they could also be more effective using medicine?)
 
 public class type{
-	static float health_buff;
-	float tiredness_buff;
-	float hunger_buff;
-	int repair_buff;
-	public String type_name;
+	static float healthBuff;
+	float tirednessBuff;
+	float hungerBuff;
+	int repairBuff;
+	public String typeName;
 	
 	//sets the individual stats of the class
-	public void set_stats(member_class state) {
+	public void getStats(MemberClass state) {
 		switch (state) {
 			case ENGINEER:
-				health_buff = 5;
-				tiredness_buff = 5;
-				hunger_buff = 5;
-				repair_buff = 8;
-				type_name = "Engineer";
+				healthBuff = 5;
+				tirednessBuff = 5;
+				hungerBuff = 5;
+				repairBuff = 8;
+				typeName = "Engineer";
 				break;
 				
 			case ATHLETE:
-				health_buff = 7;
-				tiredness_buff = 8;
-				hunger_buff = 5;
-				repair_buff = 3;
-				type_name = "Athlete";
+				healthBuff = 7;
+				tirednessBuff = 8;
+				hungerBuff = 5;
+				repairBuff = 3;
+				typeName = "Athlete";
 				break;
 				
 			case SCIENTIST:
-				health_buff = 6;
-				tiredness_buff = 4;
-				hunger_buff = 7;
-				repair_buff = 6;
-				type_name = "Scientist";
+				healthBuff = 6;
+				tirednessBuff = 4;
+				hungerBuff = 7;
+				repairBuff = 6;
+				typeName = "Scientist";
 				break;
 				
 			case PUSHOVER:
-				health_buff = 2;
-				tiredness_buff = 2;
-				hunger_buff = 2;
-				repair_buff = 2;
-				type_name = "Pushover";
+				healthBuff = 2;
+				tirednessBuff = 2;
+				hungerBuff = 2;
+				repairBuff = 2;
+				typeName = "Pushover";
 				break;
 				
 			case CYBORG:
-				health_buff = 7;
-				tiredness_buff = 7;
-				hunger_buff = 2;
-				repair_buff = 7;
-				type_name = "Cyborg";
+				healthBuff = 7;
+				tirednessBuff = 7;
+				hungerBuff = 2;
+				repairBuff = 7;
+				typeName = "Cyborg";
 				break;
 				
 			case DOCTOR:
-				health_buff = 8;
-				tiredness_buff = 8;
-				hunger_buff = 4;
-				repair_buff = 3;
-				type_name = "Doctor";
+				healthBuff = 8;
+				tirednessBuff = 8;
+				hungerBuff = 4;
+				repairBuff = 3;
+				typeName = "Doctor";
 				break;
 		}
 	}	
 	//gives the base stat for max health
-	public float get_base_health(){
-		return health_buff;
+	public float getBaseHealth(){
+		return healthBuff;
 	}
 	
 	
 	//gets the base stat for tiredness
-	public float get_base_tiredness() {
-		return tiredness_buff;
+	public float getBaseTiredness() {
+		return tirednessBuff;
 	}
 	
 	//gets the base stat for hunger
-	public float get_base_hunger() {
-		return hunger_buff;
+	public float getBaseHunger() {
+		return hungerBuff;
 	}
 	
 	//gets the base stat for repairing
-	public int get_base_repair() {
-		return repair_buff;
+	public int getBaseRepair() {
+		return repairBuff;
 	}
 }

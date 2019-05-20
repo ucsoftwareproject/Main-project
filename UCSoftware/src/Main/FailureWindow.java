@@ -51,19 +51,19 @@ public class FailureWindow {
 		frame.getContentPane().add(lblYouLose);
 		
 		
-		JButton btnCloseGame = new JButton("Close Game");
-		btnCloseGame.addActionListener(new ActionListener() {
+		JButton closeGameButton = new JButton("Close Game");
+		closeGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				System.exit(0);
 			}
 		});
-		btnCloseGame.setBounds(48, 152, 131, 23);
-		frame.getContentPane().add(btnCloseGame);
+		closeGameButton.setBounds(48, 152, 131, 23);
+		frame.getContentPane().add(closeGameButton);
 		
-		JTextPane txtpnD = new JTextPane();
-		txtpnD.setText("Your crew ran out of time!\nNow they'll be stranded forever.\nGame over.");
-		txtpnD.setBounds(10, 60, 218, 74);
-		frame.getContentPane().add(txtpnD);
+		JTextPane gameOverPane = new JTextPane();
+		gameOverPane.setText("Your crew ran out of time!\nNow they'll be stranded forever.\nGame over.");
+		gameOverPane.setBounds(10, 60, 218, 74);
+		frame.getContentPane().add(gameOverPane);
 	}
 }
