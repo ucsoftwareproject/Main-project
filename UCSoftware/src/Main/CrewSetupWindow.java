@@ -14,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Crew_setup_window {
+public class CrewSetupWindow {
 
 	private JFrame frame;
 	private JTextField txtDaniel;
@@ -22,7 +22,7 @@ public class Crew_setup_window {
 	private JTextField txtTest;
 	private JTextField txtTest_1;
 	private JTextField txtStarmansShip;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 
 
 	/**
@@ -32,7 +32,7 @@ public class Crew_setup_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Crew_setup_window window = new Crew_setup_window(environment);
+					CrewSetupWindow window = new CrewSetupWindow(environment);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class Crew_setup_window {
 	/**
 	 * Create the application.
 	 */
-	public Crew_setup_window(game_environment engine) {
+	public CrewSetupWindow(GameEnvironment engine) {
 		environment = engine;
 		initialize();
 		frame.setVisible(true);

@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class failure_window {
+public class FailureWindow {
 
 	private JFrame frame;
 
@@ -20,7 +20,7 @@ public class failure_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					failure_window window = new failure_window();
+					FailureWindow window = new FailureWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class failure_window {
 	/**
 	 * Create the application.
 	 */
-	public failure_window() {
+	public FailureWindow() {
 		initialize();
 		frame.setVisible(true);
 	}

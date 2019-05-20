@@ -6,16 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 
-import Main.game_environment;
+import Main.GameEnvironment;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GUI_Welcome_Screen {
+public class GuiWelcomeScreen {
 
 	private JFrame frmWelcome;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 
 	/**
 	 * Launch the application.
@@ -24,7 +24,7 @@ public class GUI_Welcome_Screen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_Welcome_Screen window = new GUI_Welcome_Screen(environment);
+					GuiWelcomeScreen window = new GuiWelcomeScreen(environment);
 					window.frmWelcome.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class GUI_Welcome_Screen {
 	/**
 	 * Create the application.
 	 */
-	public GUI_Welcome_Screen(game_environment engine) {
+	public GuiWelcomeScreen(GameEnvironment engine) {
 		environment = engine;
 		initialize();
 		frmWelcome.setVisible(true);

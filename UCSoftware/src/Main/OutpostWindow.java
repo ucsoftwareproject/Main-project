@@ -17,10 +17,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
-public class outpost_gui {
+public class OutpostWindow {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 	DefaultListModel<String> listModel = new DefaultListModel<String>();
 
 	/**
@@ -30,7 +30,7 @@ public class outpost_gui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					outpost_gui window = new outpost_gui(environment);
+					OutpostWindow window = new OutpostWindow(environment);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class outpost_gui {
 	/**
 	 * Create the application.
 	 */
-	public outpost_gui(game_environment engine) {
+	public OutpostWindow(GameEnvironment engine) {
 		environment = engine;
 		initialize();
 		frame.setVisible(true);

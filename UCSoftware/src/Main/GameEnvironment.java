@@ -11,7 +11,7 @@ import java.util.List;
  * @author daniel
  *
  */
-public class game_environment {
+public class GameEnvironment {
 
 	
 	protected List<item> master_items = new ArrayList<>();
@@ -147,7 +147,7 @@ public class game_environment {
 	}
 	
 	//main setup controller
-	public game_environment() {
+	public GameEnvironment() {
 		
 		//builds master lists
 		build_items();
@@ -179,35 +179,35 @@ public class game_environment {
 	
 	//sets up the GUI
 	public void launchMainScreen() {
-		GUI_Welcome_Screen mainWindow = new GUI_Welcome_Screen(this);
+		GuiWelcomeScreen mainWindow = new GuiWelcomeScreen(this);
 	}
 	
 	public void launchcrew_screen() {
-		Crew_setup_window crew_window = new Crew_setup_window(this);
+		CrewSetupWindow crew_window = new CrewSetupWindow(this);
 	}
 	
 	public void launchconfirmationscreen() {
-		Confirmation_screen confirm_screen = new Confirmation_screen(this, Crew);
+		ConfirmationScreen confirm_screen = new ConfirmationScreen(this, Crew);
 	}
 	
 	public void launch_action_window() {
-		action_window action = new action_window(this, Crew);
+		ActionWindow action = new ActionWindow(this, Crew);
 	}
 	
 	public void launch_outpost() {
-		outpost_gui outpost = new outpost_gui(this);
+		OutpostWindow outpost = new OutpostWindow(this);
 	}
 	
 	public void launch_event() {
-		Event_window event = new Event_window(this);
+		EventWindow event = new EventWindow(this);
 	}
 	
 	public void launch_failure() {
-		failure_window fail = new failure_window();
+		FailureWindow fail = new FailureWindow();
 	}
 	
 	public void launch_planet_changer() {
-		planet_change_window changer = new planet_change_window(this, Crew);
+		PlanetChangeWindow changer = new PlanetChangeWindow(this, Crew);
 	}
 	
 	public void launch_item_use_window() {
@@ -221,7 +221,7 @@ public class game_environment {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		game_environment engine = new game_environment();
+		GameEnvironment engine = new GameEnvironment();
 		engine.launchMainScreen();
 		
 		

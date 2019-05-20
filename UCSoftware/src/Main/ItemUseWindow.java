@@ -13,7 +13,7 @@ import javax.swing.JTextPane;
 public class ItemUseWindow {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 	private static crew crew_members;
 	private static member active_person = crew.Members.get(0);
 	
@@ -36,7 +36,7 @@ public class ItemUseWindow {
 	/**
 	 * Create the application.
 	 */
-	public ItemUseWindow(game_environment engine, crew crew_info) {
+	public ItemUseWindow(GameEnvironment engine, crew crew_info) {
 		environment = engine;
 		crew_members = crew_info;
 		initialize();

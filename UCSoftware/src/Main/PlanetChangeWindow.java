@@ -10,10 +10,10 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class planet_change_window {
+public class PlanetChangeWindow {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 	private static crew crew_members;
 	private static member active_person1;
 	private static member active_person2;
@@ -26,7 +26,7 @@ public class planet_change_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					planet_change_window window = new planet_change_window(environment, crew_members);
+					PlanetChangeWindow window = new PlanetChangeWindow(environment, crew_members);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class planet_change_window {
 	/**
 	 * Create the application.
 	 */
-	public planet_change_window(game_environment engine, crew crew_info) {
+	public PlanetChangeWindow(GameEnvironment engine, crew crew_info) {
 		environment = engine;
 		crew_members = crew_info;
 		initialize();

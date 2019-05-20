@@ -10,10 +10,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Event_window {
+public class EventWindow {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 
 
 	/**
@@ -23,7 +23,7 @@ public class Event_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Event_window window = new Event_window(environment);
+					EventWindow window = new EventWindow(environment);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class Event_window {
 	/**
 	 * Create the application.
 	 */
-	public Event_window(game_environment engine) {
+	public EventWindow(GameEnvironment engine) {
 		environment = engine;
 		initialize();
 		frame.setVisible(true);

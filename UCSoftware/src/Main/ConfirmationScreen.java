@@ -9,10 +9,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Confirmation_screen {
+public class ConfirmationScreen {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 	private static crew crew_members;
 
 
@@ -23,7 +23,7 @@ public class Confirmation_screen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Confirmation_screen window = new Confirmation_screen(environment, crew_members);
+					ConfirmationScreen window = new ConfirmationScreen(environment, crew_members);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class Confirmation_screen {
 	 * Create the application.
 	 */
 	
-	public Confirmation_screen(game_environment engine, crew crew_info) {
+	public ConfirmationScreen(GameEnvironment engine, crew crew_info) {
 			environment = engine;
 			crew_members = crew_info;
 			initialize();

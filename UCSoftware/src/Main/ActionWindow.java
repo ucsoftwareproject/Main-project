@@ -11,10 +11,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 
-public class action_window {
+public class ActionWindow {
 
 	private JFrame frame;
-	private static game_environment environment;
+	private static GameEnvironment environment;
 	private static crew crew_members;
 	private static member active_person = crew.Members.get(0);
 
@@ -25,7 +25,7 @@ public class action_window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					action_window window = new action_window(environment, crew_members);
+					ActionWindow window = new ActionWindow(environment, crew_members);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class action_window {
 	/**
 	 * Create the application.
 	 */
-	public action_window(game_environment engine, crew crew_info) {
+	public ActionWindow(GameEnvironment engine, crew crew_info) {
 		environment = engine;
 		crew_members = crew_info;
 		initialize();
