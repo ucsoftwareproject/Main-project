@@ -77,13 +77,33 @@ public class ItemUseWindow {
 		btnNewButton.setBounds(148, 341, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Use");
-		btnNewButton_1.setBounds(148, 280, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
-		
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(50, 179, 297, 61);
 		frame.getContentPane().add(textPane);
+		
+		JButton btnNewButton_1 = new JButton("Use");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				active_person = crew.Members.get(comboBox.getSelectedIndex());
+				if (active_person.get_actions() > 0) {
+					if (active_person.get_tiredness() > 0) {
+						active_person.consume_action();
+						active_person.work();
+						// USE THE CURRENT ITEM HERE
+					}else {
+						textPane.setText(active_person.get_name() + " is too tired to do that!");
+
+					}
+				}else {
+					textPane.setText(active_person.get_name() + " is out of actions for the day!");
+				}
+				
+			}
+		});
+		btnNewButton_1.setBounds(148, 280, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+
 		
 	}
 }
