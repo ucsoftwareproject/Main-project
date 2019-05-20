@@ -210,6 +210,10 @@ public class game_environment {
 		planet_change_window changer = new planet_change_window(this, Crew);
 	}
 	
+	public void launch_item_use_window() {
+		ItemUseWindow item = new ItemUseWindow(this, Crew);
+	}
+	
 	
 	/**
 	 * @param args

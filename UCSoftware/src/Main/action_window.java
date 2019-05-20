@@ -149,12 +149,17 @@ public class action_window {
 				
 			}
 		});
-		btnRepairShields.setBounds(167, 224, 121, 65);
+		btnRepairShields.setBounds(152, 224, 121, 65);
 		frame.getContentPane().add(btnRepairShields);
 		
 		// button to let the currently active member eat food, restoring hunger. (NO FUNCTION YET)
-		JButton btnEatFood = new JButton("Eat Food");
-		btnEatFood.setBounds(21, 309, 121, 65);
+		JButton btnEatFood = new JButton("Use an item");
+		btnEatFood.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				environment.launch_item_use_window();
+			}
+		});
+		btnEatFood.setBounds(21, 300, 168, 65);
 		frame.getContentPane().add(btnEatFood);
 		
 		// opens the planet changing menu
@@ -165,7 +170,7 @@ public class action_window {
 				frame.dispose();
 			}
 		});
-		btnChangePlanet.setBounds(314, 224, 121, 65);
+		btnChangePlanet.setBounds(236, 300, 168, 65);
 		frame.getContentPane().add(btnChangePlanet);
 		
 		// button that lets the currently active crew member search the planet for parts, as long as they have enough energy and remaining moves for the day
@@ -188,14 +193,9 @@ public class action_window {
 				}
 			}
 		});
-		btnSearchPlanet.setBounds(167, 309, 121, 65);
+		btnSearchPlanet.setBounds(283, 224, 121, 65);
 		frame.getContentPane().add(btnSearchPlanet);
 
-
-		// button to use medication to restore health to the currently active crew member if they have enough energy and remaining moves
-		JButton btnUseMedication = new JButton("Use Medication");
-		btnUseMedication.setBounds(314, 309, 121, 65);
-		frame.getContentPane().add(btnUseMedication);
 		
 		// button that takes the player to the outpost
 		JButton btnNewButton_1 = new JButton("Visit the outpost");
