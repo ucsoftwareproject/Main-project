@@ -21,51 +21,51 @@ public class type{
 	public void set_stats(member_class state) {
 		switch (state) {
 			case ENGINEER:
-				health_buff = 7;
+				health_buff = 5;
 				tiredness_buff = 5;
 				hunger_buff = 5;
-				repair_buff = 5;
+				repair_buff = 8;
 				type_name = "Engineer";
 				break;
 				
 			case ATHLETE:
-				health_buff = 5;
-				tiredness_buff = 5;
+				health_buff = 7;
+				tiredness_buff = 8;
 				hunger_buff = 5;
-				repair_buff = 5;
+				repair_buff = 3;
 				type_name = "Athlete";
 				break;
 				
 			case SCIENTIST:
-				health_buff = 5;
-				tiredness_buff = 5;
-				hunger_buff = 5;
-				repair_buff = 5;
+				health_buff = 6;
+				tiredness_buff = 4;
+				hunger_buff = 7;
+				repair_buff = 6;
 				type_name = "Scientist";
 				break;
 				
 			case PUSHOVER:
-				health_buff = 5;
-				tiredness_buff = 5;
-				hunger_buff = 5;
-				repair_buff = 5;
+				health_buff = 2;
+				tiredness_buff = 2;
+				hunger_buff = 2;
+				repair_buff = 2;
 				type_name = "Pushover";
 				break;
 				
 			case CYBORG:
-				health_buff = 5;
-				tiredness_buff = 5;
-				hunger_buff = 5;
-				repair_buff = 5;
+				health_buff = 7;
+				tiredness_buff = 7;
+				hunger_buff = 2;
+				repair_buff = 7;
 				type_name = "Cyborg";
 				break;
 				
 			case DOCTOR:
-				health_buff = 5;
-				tiredness_buff = 5;
-				hunger_buff = 5;
-				repair_buff = 5;
-				type_name = "DOCTOR";
+				health_buff = 8;
+				tiredness_buff = 8;
+				hunger_buff = 4;
+				repair_buff = 3;
+				type_name = "Doctor";
 				break;
 		}
 	}	
