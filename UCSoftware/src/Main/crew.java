@@ -9,6 +9,7 @@ public class crew {
 	public static List<member> Members = new ArrayList<>();
 	private int max_size;
 	private int money = 100;
+	private List<item> items_on_ship = new ArrayList<>();
 	
 	public crew(String Name, int Size) {
 		name = Name;
@@ -21,9 +22,22 @@ public class crew {
 		for (member s: Members) {
 			System.out.println("\t*Name: " + s.get_name() + " Type: " + s.get_type_name());
 		}
+		System.out.println("\n items on ship");
+		
+		for (item s: items_on_ship) {
+			System.out.println("\t*Item: " + s.get_name());
+		}
 		System.out.println("\n");
 	}
 	
+	
+	public void add_item(item Item) {
+		items_on_ship.add(Item);
+	}
+	
+	public item get_item(int index) {
+		return items_on_ship.get(index);
+	}
 	
 	//name functions
 	public void set_name(String Name) {
@@ -51,10 +65,10 @@ public class crew {
 	public int get_money() {
 		return money;
 	}
-	public void add_money(int amount) {
+	public void add_money(float amount) {
 		money += amount;
 	}
-	public void sub_money(int amount) {
+	public void sub_money(float amount) {
 		money += -amount;
 	}
 		

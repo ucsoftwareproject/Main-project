@@ -48,7 +48,6 @@ public class game_environment {
 	}
 	
 	public List<item> shop_items(){
-		spawn_items(6);
 		return Outpost.get_items();
 	}
 	
@@ -75,6 +74,7 @@ public class game_environment {
 	//used for ending the day in the game environment
 	public void end_day () {
 			days -= 1;
+			spawn_items(6);
 	}
 	
 	public String get_day() {
@@ -155,6 +155,8 @@ public class game_environment {
 		
 		//make crew
 		Crew = new crew("temp", 4);
+		//spawn shop
+		spawn_items(6);
 	}
 	
 	public void add_member(String name, Type2 Type) {
