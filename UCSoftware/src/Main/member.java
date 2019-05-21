@@ -65,18 +65,23 @@ public class member {
 	}
 	
 	public void work() {
-		tiredness -= 1;
+		tiredness -= 10;
 	}
 	
 	public void consumeAction() {
 		actions -= 1;
 	}
 	
-	public void eat(float ammount) {
-		hunger += ammount;
+	public void eat(float amount) {
+		hunger += amount;
 	}
-	public void meds(float ammount) {
-		health += ammount;
+	
+	public void loseHunger() {
+		hunger -= 10;
+	}
+	
+	public void meds(float amount) {
+		health += amount;
 		sick = false;
 	}
 	

@@ -1,7 +1,7 @@
 package Main;
 
 public class Type2 {
-	static float healthBuff;
+	float healthBuff;
 	float tirednessBuff;
 	float hungerBuff;
 	int repairBuff;

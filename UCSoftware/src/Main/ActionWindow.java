@@ -152,15 +152,15 @@ public class ActionWindow {
 		repairShieldsButton.setBounds(152, 224, 121, 65);
 		frame.getContentPane().add(repairShieldsButton);
 		
-		// button to let the currently active member eat food, restoring hunger. (NO FUNCTION YET)
-		JButton eatFoodButton = new JButton("Use an item");
-		eatFoodButton.addActionListener(new ActionListener() {
+		// button to open the item use menu
+		JButton useItemButton = new JButton("Use an item");
+		useItemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				environment.launchItemUseWindow();
 			}
 		});
-		eatFoodButton.setBounds(21, 300, 168, 65);
-		frame.getContentPane().add(eatFoodButton);
+		useItemButton.setBounds(21, 300, 168, 65);
+		frame.getContentPane().add(useItemButton);
 		
 		// opens the planet changing menu
 		JButton changePlanetButton = new JButton("Change Planet");
@@ -216,6 +216,9 @@ public class ActionWindow {
 				if (Integer.valueOf(day) > 1) {
 					for (member s: crewMembers.getMembers()) {
 						s.setActions(3);
+						if (s.getHunger() > 0) {
+							s.loseHunger();
+						}
 					}
 					environment.launchEvent();
 					}else {
