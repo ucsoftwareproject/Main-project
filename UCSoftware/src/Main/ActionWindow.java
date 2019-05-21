@@ -17,7 +17,7 @@ public class ActionWindow {
 	private static GameEnvironment environment;
 	private static crew crewMembers;
 	private static member activePerson = crew.Members.get(0);
-
+	private String personStatus;
 	/**
 	 * Launch the application.
 	 */
@@ -91,10 +91,15 @@ public class ActionWindow {
 		frame.getContentPane().add(viewActiveCrewButton);
 		viewActiveCrewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (activePerson.getStatus()) {
+					 personStatus = "Sick!";
+				}else {
+					personStatus = "Normal.";
+				}
 				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				String item = "Name: " + activePerson.getName() + "\nType " + activePerson.getTypeName() + 
 				"\nHunger level: " + activePerson.getHunger() + "\nCurrent HP: " + activePerson.getHealth() 
-				+ "\nEnergy: " + activePerson.getTiredness() + "\nCurrent Status: " + activePerson.getStatus();
+				+ "\nEnergy: " + activePerson.getTiredness() + "\nCurrent Status: " + personStatus;
 				outputPane1.setText(item);
 				frame.getContentPane().add(outputPane1);
 			}
@@ -109,12 +114,19 @@ public class ActionWindow {
 		JButton sleepButton = new JButton("Sleep");
 		sleepButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				if (activePerson.getActions() > 0) {
+					String hungryStatus = "";
+					if (activePerson.getHunger() == 0) {
+						activePerson.consumeAction();
+						activePerson.consumeAction();
+						hungryStatus = activePerson.getName() + " is starving! They slept through the whole day so they can't do much else.";
+					}
 					activePerson.consumeAction();
-					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
+					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?\n");
 					activePerson.sleep();
-					outputPane2.setText(activePerson.getName() + " took a nap and recovered 3 points of energy.");
+					outputPane2.setText(activePerson.getName() + " took a nap and recovered 3 points of energy." + hungryStatus);
 				}else {
 					outputPane2.setText(activePerson.getName() + " is out of actions for the day!.");
 				}
@@ -133,11 +145,17 @@ public class ActionWindow {
 				int repair_v = activePerson.getBaseRepair();
 				if (activePerson.getTiredness() > 0) {
 					if (activePerson.getActions() > 0) {
+						String hungryStatus = "";
+						if (activePerson.getHunger() == 0) {
+							activePerson.consumeAction();
+							activePerson.consumeAction();
+							hungryStatus = activePerson.getName() + " is starving! Repairing the shields took them the whole day so they can't do much else.";
+						}
 						environment.addShieldHP(repair_v);
 						activePerson.work();
 						activePerson.consumeAction();
 						lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
-						outputPane2.setText(activePerson.getName() + " repaired the shields for " + activePerson.getBaseRepair() + " points.");
+						outputPane2.setText(activePerson.getName() + " repaired the shields for " + activePerson.getBaseRepair() + " points.\n" + hungryStatus);
 					} else {
 						outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
 
@@ -180,7 +198,14 @@ public class ActionWindow {
 				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				if (activePerson.getTiredness() > 0) {
 					if (activePerson.getActions() > 0) {
-					outputPane2.setText(activePerson.getName() + " began a search!\n...\n...");
+						String hungryStatus = "";
+						if (activePerson.getHunger() == 0) {
+							activePerson.consumeAction();
+							activePerson.consumeAction();
+							
+							hungryStatus = activePerson.getName() + " is starving! Searching took them all day so they can't do much else.";
+						}
+					outputPane2.setText(hungryStatus + "\n" + activePerson.getName() + " began a search!\n...\n...");
 					activePerson.work();
 					activePerson.consumeAction();
 					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");

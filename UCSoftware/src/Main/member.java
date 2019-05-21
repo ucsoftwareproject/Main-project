@@ -69,7 +69,9 @@ public class member {
 	}
 	
 	public void consumeAction() {
-		actions -= 1;
+		if (actions > 0) {
+			actions -= 1;
+		}
 	}
 	
 	public void eat(float amount) {

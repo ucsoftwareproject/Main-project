@@ -103,6 +103,10 @@ public class ItemUseWindow {
 				activePerson = crew.Members.get(userSelect.getSelectedIndex());
 				if (activePerson.getActions() > 0) {
 					if (activePerson.getTiredness() > 0) {
+						if (activePerson.getHunger() == 0) {
+							activePerson.consumeAction();
+							activePerson.consumeAction();
+						}
 						activePerson.consumeAction();
 						activePerson.work();
 						activePerson.useItem(Crew_items.get(list_items.getSelectedIndex()));

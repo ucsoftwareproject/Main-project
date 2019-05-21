@@ -100,12 +100,24 @@ public class PlanetChangeWindow {
 				if (activePerson1 != activePerson2) {
 					if (activePerson1.getTiredness() > 0 && activePerson2.getTiredness() > 0 ) {
 						if (activePerson1.getActions() > 0 && activePerson2.getActions() > 0) {
+							String hungryStatus = "";
+							if (activePerson1.getHunger() == 0) {
+								activePerson1.consumeAction();
+								activePerson1.consumeAction();
+								hungryStatus += activePerson1.getName() + " is starving!\n";
+							}
+							if (activePerson2.getHunger() == 0) {
+								activePerson2.consumeAction();
+								activePerson2.consumeAction();
+								hungryStatus += activePerson2.getName() + " is starving!\n";
+							}
 							outputPane.setText("good");
 							activePerson1.work();
 							activePerson2.work();
 							activePerson1.consumeAction();
 							activePerson2.consumeAction();
 							// change planet here
+							outputPane.setText(hungryStatus + " Launch successful!");
 						}else {
 							outputPane.setText("One of these members is out of actions for the day!");
 						}
