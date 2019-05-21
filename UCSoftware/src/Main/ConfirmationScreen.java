@@ -100,6 +100,8 @@ public class ConfirmationScreen {
 		JButton confirmationButton = new JButton("Confirm");
 		confirmationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				environment.setPartsNeeded(Integer.parseInt(environment.getDay()));
+				
 				environment.launchActionWindow();
 				frame.dispose();
 			}

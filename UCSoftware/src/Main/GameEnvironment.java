@@ -22,6 +22,30 @@ public class GameEnvironment {
 	private int currentDay = 0;
 	public crew Crew;
 	public outpost Outpost = new outpost();
+	public int partsNeeded;
+	public int currentParts = 0;
+	
+	
+	
+	
+	public int partsTotal() {
+		return partsNeeded;
+	}
+	
+	public int partsCurrent() {
+		return currentParts;
+	}
+	
+	public void addPart() {
+		currentParts += 1;
+	}
+	
+	public void setPartsNeeded(int days) {
+		float temp = days * (2f/3f);
+		partsNeeded = (int) temp;
+		System.out.println("Parts Needed: " + partsNeeded);
+	}
+	
 	
 	public item get_random_item() {
 		
@@ -156,6 +180,7 @@ public class GameEnvironment {
 		Crew = new crew("temp", 4);
 		//spawn shop
 		spawnItems(6);
+		
 	}
 	
 	public void addMember(String name, Type2 Type) {

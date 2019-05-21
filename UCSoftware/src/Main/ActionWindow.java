@@ -66,7 +66,7 @@ public class ActionWindow {
 		JButton viewShipStatusButton = new JButton("View Ship Status");
 		viewShipStatusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				outputPane1.setText("Ship Name: " + environment.getShipName() + "\nShield HP: " + environment.getShieldHP());
+				outputPane1.setText("Ship Name: " + environment.getShipName() + "\nShield HP: " + environment.getShieldHP() + "\nParts " + environment.partsCurrent() + "/" + environment.partsNeeded);
 			}
 		});
 		viewShipStatusButton.setBounds(20, 91, 194, 65);
