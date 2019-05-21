@@ -14,6 +14,9 @@ public class member {
 	public member(String Name, Type2 Type) {
 		name = Name;
 		type = Type;
+		health = type.getBaseHealth() * 10;
+		tiredness = type.getBaseTiredness() * 10;
+		hunger = type.getBaseHunger() * 10;
 	}
 
 	
