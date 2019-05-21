@@ -209,7 +209,37 @@ public class ActionWindow {
 					activePerson.work();
 					activePerson.consumeAction();
 					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
-					//GENERATE A VALUE TO DETERMINE IF PART FOUND (if true print that the person found it, if false, print nothing was found)
+
+					//what did the player find
+					int random = environment.randomNumber(4);
+					switch (random) {
+					case 0:
+						//part
+						System.out.println("found part");
+						outputPane2.setText(outputPane2.getText() + "\n\nFound a Ship part");
+						environment.addPart();
+						break;
+					case 1:
+						//item
+						System.out.println("found item");
+						outputPane2.setText(outputPane2.getText() + "\n\nFound a Item");
+						environment.crewAddItem(environment.get_random_item());
+						break;
+					case 2:
+						//money
+						System.out.println("found money");
+						outputPane2.setText(outputPane2.getText() + "\n\nFound a pile of money");
+						environment.crewAddMoney(100);
+						break;
+					case 3:
+						//nothing
+						System.out.println("found nothing");
+						outputPane2.setText(outputPane2.getText() + "\n\nFound nothing");
+						break;
+					}
+					
+					
+					
 					}else {
 						outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
 					}

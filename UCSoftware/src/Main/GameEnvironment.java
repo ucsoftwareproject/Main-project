@@ -26,33 +26,54 @@ public class GameEnvironment {
 	public int currentParts = 0;
 	
 	
+	//add money to crew
+	public void crewAddMoney(int maxAmmount) {
+		int amount = randomNumber(maxAmmount);
+		Crew.addMoney(amount);
+	}
 	
 	
+	// add item to crew
+	public void crewAddItem(item item) {
+		Crew.addItem(item);
+	}
+	
+	//get random number
+	public int randomNumber(int max) {
+		Random rand = new Random();
+		return rand.nextInt(max);
+	}
+	
+	//get needed parts
 	public int partsTotal() {
 		return partsNeeded;
 	}
-	
+	//get current parts
 	public int partsCurrent() {
 		return currentParts;
 	}
-	
+	//add part
 	public void addPart() {
 		currentParts += 1;
+		if (currentParts >= partsNeeded) {
+			//win here
+		}
+		
 	}
-	
+	//cal parts needed
 	public void setPartsNeeded(int days) {
 		float temp = days * (2f/3f);
 		partsNeeded = (int) temp;
 		System.out.println("Parts Needed: " + partsNeeded);
 	}
 	
-	
+	//get random item
 	public item get_random_item() {
 		
 		Random rand = new Random();
 		return masterItems.get(rand.nextInt(masterItems.size()));
 	}
-	
+	//spawn outpost
 	public void spawnItems(int size) {
 		Outpost.clearItems();
 		int i = 0;
@@ -69,7 +90,7 @@ public class GameEnvironment {
 		System.out.println("\n");
 		
 	}
-	
+	//get item in shop
 	public List<item> shop_items(){
 		return Outpost.getItems();
 	}
@@ -103,15 +124,15 @@ public class GameEnvironment {
 	public String getDay() {
 		return String.valueOf(days);
 	}
-	
+	//get ship hp
 	public int getShieldHP () {
 		return shieldHp;
 	}
-	
+	//add ship hp
 	public void addShieldHP(int repair_v) {
 		shieldHp += repair_v;
 	}
-	
+	//ship take damage
 	public void damageShield(int damage_v) {
 		shieldHp -= damage_v;
 	}
