@@ -39,6 +39,14 @@ public class crew {
 		return itemsOnShip.get(index);
 	}
 	
+	public void removeItem(int index) {
+		itemsOnShip.remove(index);
+	}
+	
+	public List<item> getAllItems(){
+		return itemsOnShip;
+	}
+	
 	//name functions
 	public void setName(String Name) {
 		name = Name;

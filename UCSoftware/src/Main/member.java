@@ -68,4 +68,25 @@ public class member {
 	public void consumeAction() {
 		actions -= 1;
 	}
+	
+	public void eat(float ammount) {
+		hunger += ammount;
+	}
+	public void meds(float ammount) {
+		health += ammount;
+		sick = false;
+	}
+	
+	public void useItem(item item) {
+		System.out.println("using item: " + item.getName());
+		if (item.getType() == 0) {
+			eat(item.getImprovement());
+		}else if (item.getType() == 1) {
+			meds(item.getImprovement());
+		}else {
+			eat(item.getImprovement());
+			meds(item.getImprovement());
+		}
+			
+	}
 }

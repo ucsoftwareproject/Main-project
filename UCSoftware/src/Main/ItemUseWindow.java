@@ -5,10 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class ItemUseWindow {
 
@@ -16,6 +21,7 @@ public class ItemUseWindow {
 	private static GameEnvironment environment;
 	private static crew crewMembers;
 	private static member activePerson = crew.Members.get(0);
+	DefaultListModel<String> listModel = new DefaultListModel<String>();
 	
 	/**
 	 * Launch the application.
@@ -47,6 +53,16 @@ public class ItemUseWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		List<item> Crew_items = environment.Crew.getAllItems();
+		
+		for (item s: Crew_items) {
+			listModel.addElement(s.getName());
+		}
+		
+		
+		JList<String> list_items = new JList<>(listModel);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 432);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +86,7 @@ public class ItemUseWindow {
 		JButton exitButton = new JButton("Leave");
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.launchActionWindow();
+				//environment.launchActionWindow();
 				frame.dispose();
 			}
 		});
@@ -89,7 +105,11 @@ public class ItemUseWindow {
 					if (activePerson.getTiredness() > 0) {
 						activePerson.consumeAction();
 						activePerson.work();
-						// USE THE CURRENT ITEM HERE
+						activePerson.useItem(Crew_items.get(list_items.getSelectedIndex()));
+						crewMembers.removeItem(list_items.getSelectedIndex());
+						environment.launchItemUseWindow();;
+						environment.Crew.debug();
+						frame.dispose();
 					}else {
 						outputPane.setText(activePerson.getName() + " is too tired to do that!");
 
@@ -102,6 +122,31 @@ public class ItemUseWindow {
 		});
 		useItemButton.setBounds(148, 280, 89, 23);
 		frame.getContentPane().add(useItemButton);
+		
+		
+		
+		list_items.setSelectedIndex(0);
+		
+		list_items.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				String name = Crew_items.get(list_items.getSelectedIndex()).getName() + "\n";
+				String type_ = "";
+				float imp = Crew_items.get(list_items.getSelectedIndex()).getImprovement();
+				if (Crew_items.get(list_items.getSelectedIndex()).getType() == 0) {
+					type_ = "Type: food\n"; 
+				}else if (Crew_items.get(list_items.getSelectedIndex()).getType() == 1) {
+					type_ = "Type: meds\n"; 
+				}else {
+					type_ = "Type: mix\n";
+				}
+				
+				
+				outputPane.setText(name + "Type: " +type_ + "Improvement: " + imp);
+				
+			}
+		});
+		list_items.setBounds(50, 75, 160, 100);
+		frame.getContentPane().add(list_items);
 		
 
 		
