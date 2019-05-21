@@ -138,12 +138,12 @@ public class CrewSetupWindow {
 		//describes classes
 		JTextPane classDescriptionPane = new JTextPane();
 		classDescriptionPane.setText("Each class is has different strengths and weaknesses. "
-				+ "Engineers are the best at repairing, and decent overall\r\n" + 
-				"Athletes have high energy\r\n" + 
-				"Scientists have good health and repairs but get tired easily\r\n" + 
-				"Pushovers are a weak joke class cause I couldn't think of a sixth one\r\n" + 
-				"Cyborgs have high stats overall but need lots of food to stay running\r\n" + 
-				"Doctors have good energy and health but are bad at repairs ");
+				+ "Engineers are the best at repairing, and decent overall.\r\n" + 
+				"Athletes have high energy.\r\n" + 
+				"Scientists have good health and repairs but get tired easily.\r\n" + 
+				"Pushovers are a weak class but you'll get extra points if you use them.\r\n" + 
+				"Cyborgs have high stats overall but need lots of food to stay running.\r\n" + 
+				"Doctors have good energy and health but are bad at repairs.");
 		classDescriptionPane.setBounds(207, 68, 225, 181);
 		frame.getContentPane().add(classDescriptionPane);
 		

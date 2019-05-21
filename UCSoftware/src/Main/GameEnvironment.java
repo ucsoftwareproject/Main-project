@@ -220,7 +220,7 @@ public class GameEnvironment {
 			score += s.getHealth();
 			score += s.getTiredness();
 			if (s.getTypeName() == "Pushover"){
-					score += 100;}
+					score += 500;}
 			}
 			score += days * 100;
 			return score;
