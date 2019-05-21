@@ -49,13 +49,13 @@ public class ConfirmationScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 364, 351);
+		frame.setBounds(100, 100, 419, 351);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		// text label
 		JLabel lblConfirmInfo = new JLabel("Confirm your information");
-		lblConfirmInfo.setBounds(106, 25, 179, 14);
+		lblConfirmInfo.setBounds(149, 25, 179, 14);
 		frame.getContentPane().add(lblConfirmInfo);
 		
 		// ship name label
@@ -76,7 +76,7 @@ public class ConfirmationScreen {
 		
 		// text pane displaying each member of the crew and their class.
 		JTextPane gameInformationPane = new JTextPane();
-		gameInformationPane.setBounds(122, 136, 179, 119);
+		gameInformationPane.setBounds(122, 136, 260, 119);
 		frame.getContentPane().add(gameInformationPane);
 		String item = "";
 		for (member s: crewMembers.getMembers()) {
@@ -104,7 +104,7 @@ public class ConfirmationScreen {
 				frame.dispose();
 			}
 		});
-		confirmationButton.setBounds(130, 278, 89, 23);
+		confirmationButton.setBounds(177, 278, 89, 23);
 		frame.getContentPane().add(confirmationButton);
 		
 	}
