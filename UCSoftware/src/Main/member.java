@@ -61,7 +61,7 @@ public class member {
 	}
 	
 	public void sleep() {
-		tiredness += 3;
+		tiredness += 30;
 	}
 	
 	public void work() {
@@ -82,6 +82,9 @@ public class member {
 		hunger -= 10;
 	}
 	
+	public void loseHealth(int value) {
+		health -= value;
+	}
 	public void meds(float amount) {
 		health += amount;
 		sick = false;

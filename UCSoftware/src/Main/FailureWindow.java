@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 public class FailureWindow {
 
 	private JFrame frame;
-
+	private static GameEnvironment environment;
+	private static crew crewMembers;
+	int score;
 	/**
 	 * Launch the application.
 	 */
@@ -20,7 +22,7 @@ public class FailureWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FailureWindow window = new FailureWindow();
+					FailureWindow window = new FailureWindow(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +34,9 @@ public class FailureWindow {
 	/**
 	 * Create the application.
 	 */
-	public FailureWindow() {
+	public FailureWindow(GameEnvironment engine, crew crewInfo) {
+		environment = engine;
+		crewMembers = crewInfo;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -60,9 +64,9 @@ public class FailureWindow {
 		});
 		closeGameButton.setBounds(48, 152, 131, 23);
 		frame.getContentPane().add(closeGameButton);
-		
+		score = environment.getScore();
 		JTextPane gameOverPane = new JTextPane();
-		gameOverPane.setText("Your crew ran out of time!\nNow they'll be stranded forever.\nGame over.");
+		gameOverPane.setText("Your crew ran out of time!\nNow they'll be stranded forever.\nGame over.\nYour final score was: " + score);
 		gameOverPane.setBounds(10, 60, 218, 74);
 		frame.getContentPane().add(gameOverPane);
 	}

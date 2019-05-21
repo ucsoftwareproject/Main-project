@@ -244,6 +244,9 @@ public class ActionWindow {
 						if (s.getHunger() > 0) {
 							s.loseHunger();
 						}
+						if (s.getStatus()) {
+							s.loseHealth(20);
+						}
 					}
 					environment.launchEvent();
 					}else {

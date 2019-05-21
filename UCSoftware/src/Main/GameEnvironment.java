@@ -202,7 +202,7 @@ public class GameEnvironment {
 	}
 	
 	public void launchFailure() {
-		FailureWindow fail = new FailureWindow();
+		FailureWindow fail = new FailureWindow(this, Crew);
 	}
 	
 	public void launchPlanetChanger() {
@@ -213,6 +213,18 @@ public class GameEnvironment {
 		ItemUseWindow item = new ItemUseWindow(this, Crew);
 	}
 	
+	public int getScore() {
+		int score = 0;
+		for (member s: Crew.getMembers()) {
+			score += s.getHunger();
+			score += s.getHealth();
+			score += s.getTiredness();
+			if (s.getTypeName() == "Pushover"){
+					score += 100;}
+			}
+			score += days * 100;
+			return score;
+		}
 	
 	/**
 	 * @param args
