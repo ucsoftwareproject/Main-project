@@ -17,7 +17,7 @@ public class GameEnvironment {
 	protected List<item> masterItems = new ArrayList<>();
 	protected List<Type2> masterTypes = new ArrayList<>();
 	public String shipName;
-	public int shieldHp = 15;
+	public int shieldHp = 10;
 	private int days = 3;
 	private int currentDay = 0;
 	public crew Crew;

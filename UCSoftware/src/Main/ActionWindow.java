@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -283,6 +285,9 @@ public class ActionWindow {
 		endTheDayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String day = environment.getDay();
+				
+				List<member> membersDead = new ArrayList<>();
+				
 				if (Integer.valueOf(day) > 1) {
 					for (member s: crewMembers.getMembers()) {
 						s.setActions(3);
@@ -292,17 +297,23 @@ public class ActionWindow {
 						if (s.getStatus()) {
 							s.loseHealth(20);
 							if (s.getHealth() <= 0) {
-								crewMembers.removeMember(s);
-								System.out.println("DEATH");
-								if (crewMembers.getSize() == 0) {
-									environment.launchFailure();
-									frame.dispose();
-									return;
-								}
+								membersDead.add(s);	
 							}
 						}
 					}
+					
+					for (member s: membersDead) {
+						System.out.println(s.getName() + " has died");
+						crewMembers.removeMember(s);
+					}
+					if (crewMembers.getSize() == 0) {
+						environment.launchFailure();
+						frame.dispose();
+						return;
+					}
+					
 					environment.launchEvent();
+
 					}else {
 						environment.launchFailure();
 					}

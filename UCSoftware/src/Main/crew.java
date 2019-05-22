@@ -37,8 +37,6 @@ public class crew {
 	}
 	
 	public void removeMember(Object o) {
-		int item = getSize();
-		System.out.println(item);
 		Members.remove(o);
 	}
 		
@@ -54,9 +52,17 @@ public class crew {
 	
 
 	public void plage() {
-		int size = Members.size();
-		Random rand = new Random();
-		Members.get(rand.nextInt(size)).plague();
+		// if indexing error
+		try {
+			int size = Members.size();
+			Random rand = new Random();
+			System.out.println("size of crew: " + size);
+			Members.get(rand.nextInt(size)).plague();
+		}catch (Exception e) {
+			Members.get(0).plague();
+			System.out.println("indexing fallback");
+		}
+
 	}
 	
 	

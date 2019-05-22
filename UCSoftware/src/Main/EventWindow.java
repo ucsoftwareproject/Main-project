@@ -86,10 +86,10 @@ public class EventWindow {
 				damage_v = 3;
 			}
 			environment.damageShield(damage_v);
-			if (environment.getShieldHP() <= 0) {
-				environment.launchFailure();
-				frame.dispose();
-			}
+			//if (environment.getShieldHP() <= 0) {
+				//environment.launchFailure();
+				//frame.dispose();
+			//}
 			eventDescriptionPane.setText("The ship passed through an asteroid belt.\nThe shields took damage!");
 			break;
 		case 3:
@@ -103,9 +103,15 @@ public class EventWindow {
 		JButton continueButton = new JButton("Continue");
 		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				environment.endDay();
-				environment.launchActionWindow();
-				frame.dispose();
+				
+				if (environment.getShieldHP() <= 0) {
+					environment.launchFailure();
+					frame.dispose();
+				}else {
+					environment.endDay();
+					environment.launchActionWindow();
+					frame.dispose();
+				}
 			}
 		});
 		continueButton.setBounds(72, 377, 298, 23);
