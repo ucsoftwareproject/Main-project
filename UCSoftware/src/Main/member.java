@@ -88,9 +88,6 @@ public class member {
 	
 	public void loseHealth(int value) {
 		health -= value;
-		if (health <= 0) {
-			
-		}
 	}
 	public void meds(float amount) {
 		health += amount;
