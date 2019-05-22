@@ -60,23 +60,23 @@ public class ConfirmationScreen {
 		
 		// ship name label
 		JLabel lblShipName = new JLabel("Ship Name:");
-		lblShipName.setBounds(10, 66, 70, 14);
+		lblShipName.setBounds(10, 66, 115, 14);
 		frame.getContentPane().add(lblShipName);
 		
 		// label displaying the name of the ship
 		JLabel lblUserShipName = new JLabel("");
-		lblUserShipName .setBounds(122, 66, 179, 14);
+		lblUserShipName .setBounds(149, 66, 179, 14);
 		frame.getContentPane().add(lblUserShipName );
 		lblUserShipName .setText(environment.getShipName());
 		
 		// crew member label
 		JLabel lblCrewMembers = new JLabel("Crew Members:");
-		lblCrewMembers.setBounds(10, 136, 97, 14);
+		lblCrewMembers.setBounds(10, 136, 121, 14);
 		frame.getContentPane().add(lblCrewMembers);
 		
 		// text pane displaying each member of the crew and their class.
 		JTextPane gameInformationPane = new JTextPane();
-		gameInformationPane.setBounds(122, 136, 260, 119);
+		gameInformationPane.setBounds(149, 136, 260, 119);
 		frame.getContentPane().add(gameInformationPane);
 		String item = "";
 		for (member s: crewMembers.getMembers()) {
@@ -87,12 +87,12 @@ public class ConfirmationScreen {
 		
 		//number of days label
 		JLabel lblNumberOfDays = new JLabel("Number of days:");
-		lblNumberOfDays.setBounds(10, 101, 97, 14);
+		lblNumberOfDays.setBounds(10, 101, 138, 23);
 		frame.getContentPane().add(lblNumberOfDays);
 		
 		// displays the number of days
 		JLabel lblUserdays = new JLabel("");
-		lblUserdays.setBounds(122, 101, 46, 14);
+		lblUserdays.setBounds(149, 105, 117, 14);
 		frame.getContentPane().add(lblUserdays);
 		lblUserdays.setText(environment.getDay());
 		

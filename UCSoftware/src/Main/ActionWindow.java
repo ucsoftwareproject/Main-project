@@ -87,8 +87,8 @@ public class ActionWindow {
 		}
 		
 		// button that displays the statistics of the currently selected crew member
-		JButton viewActiveCrewButton = new JButton("View active crew member status");
-		viewActiveCrewButton.setBounds(241, 91, 194, 65);
+		JButton viewActiveCrewButton = new JButton("View active crew member");
+		viewActiveCrewButton.setBounds(226, 91, 234, 65);
 		frame.getContentPane().add(viewActiveCrewButton);
 		viewActiveCrewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -168,7 +168,7 @@ public class ActionWindow {
 				
 			}
 		});
-		repairShieldsButton.setBounds(152, 224, 121, 65);
+		repairShieldsButton.setBounds(154, 224, 148, 65);
 		frame.getContentPane().add(repairShieldsButton);
 		
 		// button to open the item use menu
@@ -178,7 +178,7 @@ public class ActionWindow {
 				environment.launchItemUseWindow();
 			}
 		});
-		useItemButton.setBounds(21, 300, 168, 65);
+		useItemButton.setBounds(21, 300, 206, 65);
 		frame.getContentPane().add(useItemButton);
 		
 		// opens the planet changing menu
@@ -189,7 +189,7 @@ public class ActionWindow {
 				frame.dispose();
 			}
 		});
-		changePlanetButton.setBounds(236, 300, 168, 65);
+		changePlanetButton.setBounds(267, 301, 201, 65);
 		frame.getContentPane().add(changePlanetButton);
 		
 		// button that lets the currently active crew member search the planet for parts, as long as they have enough energy and remaining moves for the day
@@ -261,7 +261,7 @@ public class ActionWindow {
 				}
 			}
 		});
-		searchPlanetButton.setBounds(283, 224, 121, 65);
+		searchPlanetButton.setBounds(314, 224, 154, 65);
 		frame.getContentPane().add(searchPlanetButton);
 
 		

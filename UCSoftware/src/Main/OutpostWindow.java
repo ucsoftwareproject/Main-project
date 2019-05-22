@@ -64,7 +64,7 @@ public class OutpostWindow {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblWelcome = new JLabel("Welcome to the Alien Outpost!");
-		lblWelcome.setBounds(269, 22, 189, 14);
+		lblWelcome.setBounds(269, 22, 326, 14);
 		frame.getContentPane().add(lblWelcome);
 		
 		JLabel lblPlayerMoney = new JLabel("Player money: " + environment.Crew.getMoney() + ".");

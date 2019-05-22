@@ -105,7 +105,7 @@ public class CrewSetupWindow {
 		// member 1 name entry
 		nameEntryOne = new JTextField();
 		nameEntryOne.setText("Daniel");
-		nameEntryOne.setBounds(111, 68, 86, 20);
+		nameEntryOne.setBounds(111, 68, 98, 20);
 		frame.getContentPane().add(nameEntryOne);
 		nameEntryOne.setColumns(10);
 		
@@ -113,26 +113,26 @@ public class CrewSetupWindow {
 		nameEntryTwo = new JTextField();
 		nameEntryTwo.setText("David");
 		nameEntryTwo.setColumns(10);
-		nameEntryTwo.setBounds(111, 99, 86, 20);
+		nameEntryTwo.setBounds(111, 99, 98, 20);
 		frame.getContentPane().add(nameEntryTwo);
 		
 		// member 3 name entry, if name isn't changed then member isn't added
 		nameEntryThree = new JTextField();
 		nameEntryThree.setText("Enter a name!");
 		nameEntryThree.setColumns(10);
-		nameEntryThree.setBounds(111, 132, 86, 20);
+		nameEntryThree.setBounds(111, 132, 98, 20);
 		frame.getContentPane().add(nameEntryThree);
 		
 		// member 4 name entry, if name isn't changed then member isn't added
 		nameEntryFour = new JTextField();
 		nameEntryFour.setText("Enter a name!");
 		nameEntryFour.setColumns(10);
-		nameEntryFour.setBounds(111, 163, 86, 20);
+		nameEntryFour.setBounds(111, 163, 98, 20);
 		frame.getContentPane().add(nameEntryFour);
 		
 		// text label
 		JLabel lblInformation = new JLabel("Information:");
-		lblInformation.setBounds(207, 43, 100, 14);
+		lblInformation.setBounds(221, 27, 100, 14);
 		frame.getContentPane().add(lblInformation);
 		
 		//describes classes
@@ -144,7 +144,7 @@ public class CrewSetupWindow {
 				"Pushovers are a weak class but you'll get extra points if you use them.\r\n" + 
 				"Cyborgs have high stats overall but need lots of food to stay running.\r\n" + 
 				"Doctors have good energy and health but are bad at repairs.");
-		classDescriptionPane.setBounds(207, 68, 225, 181);
+		classDescriptionPane.setBounds(221, 56, 225, 220);
 		frame.getContentPane().add(classDescriptionPane);
 		
 		// text label
@@ -182,7 +182,7 @@ public class CrewSetupWindow {
 				frame.dispose();
 			}
 		});
-		confirmCrewButton.setBounds(207, 260, 153, 23);
+		confirmCrewButton.setBounds(221, 287, 153, 23);
 		frame.getContentPane().add(confirmCrewButton);
 	}
 }

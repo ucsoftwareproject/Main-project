@@ -67,7 +67,7 @@ public class PlanetChangeWindow {
 		
 		// text label
 		JLabel lblSelectWhoShould = new JLabel("Select two crew members to pilot the ship");
-		lblSelectWhoShould.setBounds(129, 11, 272, 14);
+		lblSelectWhoShould.setBounds(59, 12, 349, 15);
 		frame.getContentPane().add(lblSelectWhoShould);
 		
 		// combo box to select the first member to pilot

@@ -69,11 +69,11 @@ public class ItemUseWindow {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblChooseAnItem = new JLabel("Choose an item:");
-		lblChooseAnItem.setBounds(50, 32, 107, 14);
+		lblChooseAnItem.setBounds(50, 32, 144, 14);
 		frame.getContentPane().add(lblChooseAnItem);
 		
 		JLabel lblChooseUser = new JLabel("Choose who should use it:");
-		lblChooseUser.setBounds(218, 32, 160, 14);
+		lblChooseUser.setBounds(218, 32, 208, 14);
 		frame.getContentPane().add(lblChooseUser);
 		
 		JComboBox userSelect = new JComboBox();
