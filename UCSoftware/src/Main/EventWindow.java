@@ -108,7 +108,7 @@ public class EventWindow {
 				frame.dispose();
 			}
 		});
-		continueButton.setBounds(173, 377, 89, 23);
+		continueButton.setBounds(72, 377, 298, 23);
 		frame.getContentPane().add(continueButton);
 	}
 
