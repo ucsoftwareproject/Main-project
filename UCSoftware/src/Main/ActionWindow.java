@@ -293,6 +293,7 @@ public class ActionWindow {
 							s.loseHealth(20);
 							if (s.getHealth() <= 0) {
 								crewMembers.removeMember(s);
+								System.out.println("DEATH");
 								if (crewMembers.getSize() == 0) {
 									environment.launchFailure();
 									frame.dispose();
