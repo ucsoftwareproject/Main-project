@@ -66,7 +66,8 @@ public class ActionWindow {
 		JButton viewShipStatusButton = new JButton("View Ship Status");
 		viewShipStatusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				outputPane1.setText("Ship Name: " + environment.getShipName() + "\nShield HP: " + environment.getShieldHP() + "\nParts " + environment.partsCurrent() + "/" + environment.partsNeeded);
+				outputPane1.setText("Ship Name: " + environment.getShipName() + "\nShield HP: " + environment.getShieldHP() + "\nParts: " 
+			+ environment.partsCurrent() + "/" + environment.partsNeeded + "\nMoney: " + environment.Crew.getMoney());
 			}
 		});
 		viewShipStatusButton.setBounds(20, 91, 194, 65);
@@ -91,12 +92,12 @@ public class ActionWindow {
 		frame.getContentPane().add(viewActiveCrewButton);
 		viewActiveCrewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				if (activePerson.getStatus()) {
 					 personStatus = "Sick!";
 				}else {
 					personStatus = "Normal.";
 				}
-				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				String item = "Name: " + activePerson.getName() + "\nType " + activePerson.getTypeName() + 
 				"\nHunger level: " + activePerson.getHunger() + "\nCurrent HP: " + activePerson.getHealth() 
 				+ "\nEnergy: " + activePerson.getTiredness() + "\nCurrent Status: " + personStatus;
@@ -196,55 +197,63 @@ public class ActionWindow {
 		searchPlanetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
-				if (activePerson.getTiredness() > 0) {
-					if (activePerson.getActions() > 0) {
-						String hungryStatus = "";
-						if (activePerson.getHunger() == 0) {
-							activePerson.consumeAction();
-							activePerson.consumeAction();
-							
-							hungryStatus = activePerson.getName() + " is starving! Searching took them all day so they can't do much else.";
+				
+				if (environment.searched() == false) {
+					if (activePerson.getTiredness() > 0) {
+						if (activePerson.getActions() > 0) {
+							String hungryStatus = "";
+							if (activePerson.getHunger() == 0) {
+								activePerson.consumeAction();
+								activePerson.consumeAction();
+								
+								hungryStatus = activePerson.getName() + " is starving! Searching took them all day so they can't do much else.";
+							}
+						outputPane2.setText(hungryStatus + "\n" + activePerson.getName() + " began a search!\n...\n...");
+						activePerson.work();
+						activePerson.consumeAction();
+						lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
+	
+						//search
+						environment.planetSearched();
+						
+						//what did the player find
+						int random = environment.randomNumber(4);
+						switch (random) {
+						case 0:
+							//part
+							System.out.println("found part");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound a Ship part");
+							environment.addPart();
+							break;
+						case 1:
+							//item
+							System.out.println("found item");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound a Item");
+							environment.crewAddItem(environment.get_random_item());
+							break;
+						case 2:
+							//money
+							System.out.println("found money");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound a pile of money");
+							environment.crewAddMoney(100);
+							break;
+						case 3:
+							//nothing
+							System.out.println("found nothing");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound nothing");
+							break;
 						}
-					outputPane2.setText(hungryStatus + "\n" + activePerson.getName() + " began a search!\n...\n...");
-					activePerson.work();
-					activePerson.consumeAction();
-					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?");
-
-					//what did the player find
-					int random = environment.randomNumber(4);
-					switch (random) {
-					case 0:
-						//part
-						System.out.println("found part");
-						outputPane2.setText(outputPane2.getText() + "\n\nFound a Ship part");
-						environment.addPart();
-						break;
-					case 1:
-						//item
-						System.out.println("found item");
-						outputPane2.setText(outputPane2.getText() + "\n\nFound a Item");
-						environment.crewAddItem(environment.get_random_item());
-						break;
-					case 2:
-						//money
-						System.out.println("found money");
-						outputPane2.setText(outputPane2.getText() + "\n\nFound a pile of money");
-						environment.crewAddMoney(100);
-						break;
-					case 3:
-						//nothing
-						System.out.println("found nothing");
-						outputPane2.setText(outputPane2.getText() + "\n\nFound nothing");
-						break;
+						
+						
+						
+						}else {
+							outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
+						}
+					} else {
+						outputPane2.setText(activePerson.getName() + " is too tired to search the planet!");
 					}
-					
-					
-					
-					}else {
-						outputPane2.setText(activePerson.getName() + " is out of actions for the day!");
-					}
-				} else {
-					outputPane2.setText(activePerson.getName() + " is too tired to search the planet!");
+				}else {
+					outputPane2.setText("Already searched the Planet");
 				}
 			}
 		});

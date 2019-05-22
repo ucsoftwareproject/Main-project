@@ -46,6 +46,9 @@ public class EventWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		int temp = environment.randomNumber(4);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 466);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +62,33 @@ public class EventWindow {
 		JTextPane eventDescriptionPane = new JTextPane();
 		eventDescriptionPane.setBounds(72, 87, 298, 269);
 		frame.getContentPane().add(eventDescriptionPane);
+		
+		switch(temp) {
+		case 0:
+			//Alien pirates
+			System.out.println("Alien pirates");
+			environment.Crew.alien();
+			environment.Crew.debug();
+			eventDescriptionPane.setText("Alien pirates attack!!\nA random item was stolen");
+			break;
+		case 1:
+			//Space plague.
+			System.out.println("Space plague");
+			environment.Crew.plage();
+			eventDescriptionPane.setText("A space plague has entered the ship.\nSome one got sick");
+			break;
+		case 2:
+			//Asteroid belt.
+			System.out.println("Asteroid belt");
+			//add sheid damage
+			eventDescriptionPane.setText("The ship passed through a asteroid belt.\nThe sheild took damage");
+			break;
+		case 3:
+			//nothing
+			System.out.println("Safe Trip");
+			eventDescriptionPane.setText("The crew had a safe trip");
+			break;
+		}
 		
 		// returns the player to the action window
 		JButton continueButton = new JButton("Continue");

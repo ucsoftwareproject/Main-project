@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.List;
 
 public class crew {
@@ -28,6 +29,22 @@ public class crew {
 			System.out.println("\t*Item: " + s.getName());
 		}
 		System.out.println("\n");
+	}
+	
+	
+	public void alien() {
+		if (itemsOnShip.size() != 0) {
+			int size = itemsOnShip.size();
+			Random rand = new Random();
+			itemsOnShip.remove(rand.nextInt(size));
+		}
+		
+	}
+	
+	public void plage() {
+		int size = Members.size();
+		Random rand = new Random();
+		Members.get(rand.nextInt(size)).plage();
 	}
 	
 	

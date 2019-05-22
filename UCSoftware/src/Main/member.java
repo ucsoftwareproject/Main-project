@@ -18,6 +18,10 @@ public class member {
 		tiredness = type.getBaseTiredness() * 10;
 		hunger = type.getBaseHunger() * 10;
 	}
+	
+	public void plage() {
+		sick = true;
+	}
 
 	
 	public String getName() {

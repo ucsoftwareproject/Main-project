@@ -24,6 +24,19 @@ public class GameEnvironment {
 	public outpost Outpost = new outpost();
 	public int partsNeeded;
 	public int currentParts = 0;
+	public Planet planet;
+	
+	//find item
+	public void planetSearched() {
+		planet.searched();
+	}
+	public void newPlanet() {
+		planet.newPlanet();
+	}
+	public boolean searched() {
+		return planet.isSearched();
+	}
+	
 	
 	
 	//add money to crew
@@ -75,6 +88,7 @@ public class GameEnvironment {
 	}
 	//spawn outpost
 	public void spawnItems(int size) {
+		System.out.println("Outpost changing (spawning new items)");
 		Outpost.clearItems();
 		int i = 0;
 		while (i < size){
@@ -118,7 +132,7 @@ public class GameEnvironment {
 	//used for ending the day in the game environment
 	public void endDay () {
 			days -= 1;
-			spawnItems(6);
+			//spawnItems(6);
 	}
 	
 	public String getDay() {
@@ -199,6 +213,7 @@ public class GameEnvironment {
 		
 		//make crew
 		Crew = new crew("temp", 4);
+		planet = new Planet();
 		//spawn shop
 		spawnItems(6);
 		

@@ -118,6 +118,12 @@ public class PlanetChangeWindow {
 							activePerson2.consumeAction();
 							// change planet here
 							outputPane.setText(hungryStatus + " Launch successful!");
+							
+							System.out.println("changing planet");
+							environment.spawnItems(6);
+							environment.newPlanet();
+							
+							
 						}else {
 							outputPane.setText("One of these members is out of actions for the day!");
 						}
