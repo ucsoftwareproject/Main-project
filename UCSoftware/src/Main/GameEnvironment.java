@@ -17,7 +17,7 @@ public class GameEnvironment {
 	protected List<item> masterItems = new ArrayList<>();
 	protected List<Type2> masterTypes = new ArrayList<>();
 	public String shipName;
-	public int shieldHp = 10;
+	public int shieldHp = 1;
 	private int days = 3;
 	private int currentDay = 0;
 	public crew Crew;
@@ -292,8 +292,9 @@ public class GameEnvironment {
 			if (s.getTypeName() == "Pushover"){
 					score += 500;}
 			}
-			score += days * 100;
-			return score;
+		score += currentParts * 400;
+		score += days * 100;
+		return score;
 		}
 	
 	/**

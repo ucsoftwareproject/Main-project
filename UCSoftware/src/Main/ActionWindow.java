@@ -289,6 +289,13 @@ public class ActionWindow {
 						}
 						if (s.getStatus()) {
 							s.loseHealth(20);
+							if (s.getHealth() <= 0) {
+								crewMembers.removeMember(s);
+								if (crewMembers.getSize() == 0) {
+									environment.launchFailure();
+									frame.dispose();
+								}
+							}
 						}
 					}
 					environment.launchEvent();

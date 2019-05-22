@@ -31,6 +31,11 @@ public class crew {
 		System.out.println("\n");
 	}
 	
+	
+	public void removeMember(Object o) {
+		Members.remove(o);
+	}
+		
 	//attack
 	public void alien() {
 		if (itemsOnShip.size() != 0) {
@@ -41,10 +46,14 @@ public class crew {
 		
 	}
 	
+	public int getSize() {
+		int crewSize = Members.size();
+		return crewSize;
+	}
 	public void plage() {
 		int size = Members.size();
 		Random rand = new Random();
-		Members.get(rand.nextInt(size)).plage();
+		Members.get(rand.nextInt(size)).plague();
 	}
 	
 	
@@ -96,6 +105,6 @@ public class crew {
 	public void subMoney(float amount) {
 		money += -amount;
 	}
-		
+
 	
 }

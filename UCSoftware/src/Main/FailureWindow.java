@@ -66,7 +66,7 @@ public class FailureWindow {
 		frame.getContentPane().add(closeGameButton);
 		score = environment.getScore();
 		JTextPane gameOverPane = new JTextPane();
-		gameOverPane.setText("Your crew ran out of time!\nNow they'll be stranded forever.\nGame over.\nYour final score was: " + score);
+		gameOverPane.setText("\nGame over.\nYour final score was: " + score);
 		gameOverPane.setBounds(10, 60, 218, 74);
 		frame.getContentPane().add(gameOverPane);
 	}
