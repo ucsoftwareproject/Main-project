@@ -39,6 +39,7 @@ public class GameEnvironment {
 	
 	
 	
+	
 	//add money to crew
 	public void crewAddMoney(int maxAmmount) {
 		int amount = randomNumber(maxAmmount);
