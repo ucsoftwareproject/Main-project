@@ -19,7 +19,6 @@ public class GameEnvironment {
 	public String shipName;
 	public int shieldHp = 10;
 	private int days = 3;
-	private int currentDay = 0;
 	public crew Crew;
 	public outpost Outpost = new outpost();
 	public int partsNeeded;
