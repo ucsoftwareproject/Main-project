@@ -147,7 +147,6 @@ public class ActionWindow {
 		JButton repairShieldsButton = new JButton("Repair Shields ");
 		repairShieldsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				int repair_v = activePerson.getBaseRepair();
 				if (activePerson.getTiredness() > 0) {
 					if (activePerson.getActions() > 0) {
@@ -200,9 +199,7 @@ public class ActionWindow {
 		// button that lets the currently active crew member search the planet for parts, as long as they have enough energy and remaining moves for the day
 		JButton searchPlanetButton = new JButton("Search Planet");
 		searchPlanetButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
-				
+			public void actionPerformed(ActionEvent arg0) {				
 				if (environment.searched() == false) {
 					if (activePerson.getTiredness() > 0) {
 						if (activePerson.getActions() > 0) {
