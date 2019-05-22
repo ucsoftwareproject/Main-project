@@ -31,7 +31,7 @@ public class crew {
 		System.out.println("\n");
 	}
 	
-	
+	//attack
 	public void alien() {
 		if (itemsOnShip.size() != 0) {
 			int size = itemsOnShip.size();
