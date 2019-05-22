@@ -74,11 +74,15 @@ public class GameEnvironment {
 		}
 		
 	}
-	//cal parts needed
+	//call parts needed
 	public void setPartsNeeded(int days) {
 		float temp = days * (2f/3f);
 		partsNeeded = (int) temp;
 		System.out.println("Parts Needed: " + partsNeeded);
+	}
+	
+	public int getPartsNeeded() {
+		return partsNeeded;
 	}
 	
 	//get random item
@@ -265,6 +269,10 @@ public class GameEnvironment {
 	
 	public void launchFailure() {
 		FailureWindow fail = new FailureWindow(this, Crew);
+	}
+	
+	public void launchWin() {
+		WinScreenWindow win = new WinScreenWindow(this, Crew);
 	}
 	
 	public void launchPlanetChanger() {

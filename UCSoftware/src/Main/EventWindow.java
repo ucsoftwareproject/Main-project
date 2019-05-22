@@ -69,24 +69,24 @@ public class EventWindow {
 			System.out.println("Alien pirates");
 			environment.Crew.alien();
 			environment.Crew.debug();
-			eventDescriptionPane.setText("Alien pirates attack!!\nA random item was stolen");
+			eventDescriptionPane.setText("Alien pirates attack!!\nA random item was stolen!");
 			break;
 		case 1:
 			//Space plague.
 			System.out.println("Space plague");
 			environment.Crew.plage();
-			eventDescriptionPane.setText("A space plague has entered the ship.\nSome one got sick");
+			eventDescriptionPane.setText("A mysterious space plague has entered the ship.\nSomeone got sick!");
 			break;
 		case 2:
 			//Asteroid belt.
 			System.out.println("Asteroid belt");
 			//add sheid damage
-			eventDescriptionPane.setText("The ship passed through a asteroid belt.\nThe sheild took damage");
+			eventDescriptionPane.setText("The ship passed through an asteroid belt.\nThe shields took damage!");
 			break;
 		case 3:
 			//nothing
 			System.out.println("Safe Trip");
-			eventDescriptionPane.setText("The crew had a safe trip");
+			eventDescriptionPane.setText("The crew had a safe trip.");
 			break;
 		}
 		
