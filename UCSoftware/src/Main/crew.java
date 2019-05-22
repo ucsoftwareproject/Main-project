@@ -31,8 +31,14 @@ public class crew {
 		System.out.println("\n");
 	}
 	
+	public int getSize() {
+		int crewSize = Members.size();
+		return crewSize;
+	}
 	
 	public void removeMember(Object o) {
+		int item = getSize();
+		System.out.println(item);
 		Members.remove(o);
 	}
 		
@@ -46,10 +52,7 @@ public class crew {
 		
 	}
 	
-	public int getSize() {
-		int crewSize = Members.size();
-		return crewSize;
-	}
+
 	public void plage() {
 		int size = Members.size();
 		Random rand = new Random();

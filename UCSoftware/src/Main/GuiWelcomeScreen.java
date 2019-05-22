@@ -61,7 +61,7 @@ public class GuiWelcomeScreen {
 		frmWelcome.getContentPane().add(lblWelcomeToSpace);
 		
 		JLabel lblSelectTheNumber = new JLabel("Select the number of in-game days you would like:");
-		lblSelectTheNumber.setBounds(25, 83, 402, 14);
+		lblSelectTheNumber.setBounds(25, 83, 402, 23);
 		frmWelcome.getContentPane().add(lblSelectTheNumber);
 		
 		//moves to the next page

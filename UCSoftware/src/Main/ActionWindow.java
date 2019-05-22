@@ -296,6 +296,7 @@ public class ActionWindow {
 								if (crewMembers.getSize() == 0) {
 									environment.launchFailure();
 									frame.dispose();
+									return;
 								}
 							}
 						}
