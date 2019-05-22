@@ -80,7 +80,7 @@ public class EventWindow {
 		case 2:
 			//Asteroid belt.
 			System.out.println("Asteroid belt");
-			//add sheid damage
+			environment.damageShield(25 * (1 - (environment.partsCurrent() / environment.partsTotal())));
 			eventDescriptionPane.setText("The ship passed through a asteroid belt.\nThe sheild took damage");
 			break;
 		case 3:
