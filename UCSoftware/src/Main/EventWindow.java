@@ -69,24 +69,37 @@ public class EventWindow {
 			System.out.println("Alien pirates");
 			environment.Crew.alien();
 			environment.Crew.debug();
-			eventDescriptionPane.setText("Alien pirates attack!!\nA random item was stolen");
+			eventDescriptionPane.setText("Alien pirates attack!!\nA random item was stolen!");
 			break;
 		case 1:
 			//Space plague.
 			System.out.println("Space plague");
 			environment.Crew.plage();
-			eventDescriptionPane.setText("A space plague has entered the ship.\nSome one got sick");
+			eventDescriptionPane.setText("A mysterious space plague has entered the ship.\nSomeone got sick!");
 			break;
 		case 2:
 			//Asteroid belt.
 			System.out.println("Asteroid belt");
+<<<<<<< HEAD
 			environment.damageShield(25 * (1 - (environment.partsCurrent() / environment.partsTotal())));
 			eventDescriptionPane.setText("The ship passed through a asteroid belt.\nThe sheild took damage");
+=======
+			int damage_v = environment.getShieldHP() / 3;
+			if (damage_v < 3) {
+				damage_v = 3;
+			}
+			environment.damageShield(damage_v);
+			if (environment.getShieldHP() <= 0) {
+				environment.launchFailure();
+				frame.dispose();
+			}
+			eventDescriptionPane.setText("The ship passed through an asteroid belt.\nThe shields took damage!");
+>>>>>>> branch 'master' of https://github.com/ucsoftwareproject/Main-project.git
 			break;
 		case 3:
 			//nothing
 			System.out.println("Safe Trip");
-			eventDescriptionPane.setText("The crew had a safe trip");
+			eventDescriptionPane.setText("The crew had a safe trip.");
 			break;
 		}
 		

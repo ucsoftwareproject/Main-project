@@ -1,15 +1,15 @@
 package Main;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class FailureWindow {
+public class WinScreenWindow {
 
 	private JFrame frame;
 	private static GameEnvironment environment;
@@ -22,7 +22,7 @@ public class FailureWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FailureWindow window = new FailureWindow(environment, crewMembers);
+					WinScreenWindow window = new WinScreenWindow(environment, crewMembers);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class FailureWindow {
 	/**
 	 * Create the application.
 	 */
-	public FailureWindow(GameEnvironment engine, crew crewInfo) {
+	public WinScreenWindow(GameEnvironment engine, crew crewInfo) {
 		environment = engine;
 		crewMembers = crewInfo;
 		initialize();
@@ -46,12 +46,12 @@ public class FailureWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 254, 240);
+		frame.setBounds(100, 100, 334, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblYouLose = new JLabel("YOU LOSE");
-		lblYouLose.setBounds(88, 31, 106, 14);
+		JLabel lblYouLose = new JLabel("YOU WON!!");
+		lblYouLose.setBounds(133, 34, 106, 14);
 		frame.getContentPane().add(lblYouLose);
 		
 		
@@ -62,12 +62,12 @@ public class FailureWindow {
 				System.exit(0);
 			}
 		});
-		closeGameButton.setBounds(48, 152, 131, 23);
+		closeGameButton.setBounds(88, 220, 131, 23);
 		frame.getContentPane().add(closeGameButton);
 		score = environment.getScore();
 		JTextPane gameOverPane = new JTextPane();
-		gameOverPane.setText("\nGame over.\nYour final score was: " + score);
-		gameOverPane.setBounds(10, 60, 218, 74);
+		gameOverPane.setText("Your crew managed to find all of the ship parts! They boarded " + environment.getShipName() + " and managed to continue their journey!\nYour final score was: " + score);
+		gameOverPane.setBounds(30, 78, 262, 96);
 		frame.getContentPane().add(gameOverPane);
 	}
 }

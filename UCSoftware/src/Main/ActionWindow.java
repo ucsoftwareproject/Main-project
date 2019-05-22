@@ -127,7 +127,7 @@ public class ActionWindow {
 					activePerson.consumeAction();
 					lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?\n");
 					activePerson.sleep();
-					outputPane2.setText(activePerson.getName() + " took a nap and recovered 3 points of energy." + hungryStatus);
+					outputPane2.setText(activePerson.getName() + " took a nap and recovered 30 points of energy." + hungryStatus);
 				}else {
 					outputPane2.setText(activePerson.getName() + " is out of actions for the day!.");
 				}
@@ -222,25 +222,29 @@ public class ActionWindow {
 						case 0:
 							//part
 							System.out.println("found part");
-							outputPane2.setText(outputPane2.getText() + "\n\nFound a Ship part");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound a Ship part!");
 							environment.addPart();
+							if (environment.currentParts >= environment.getPartsNeeded()){
+								environment.launchWin();
+								frame.dispose();
+							}
 							break;
 						case 1:
 							//item
 							System.out.println("found item");
-							outputPane2.setText(outputPane2.getText() + "\n\nFound a Item");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound an Item.");
 							environment.crewAddItem(environment.get_random_item());
 							break;
 						case 2:
 							//money
 							System.out.println("found money");
-							outputPane2.setText(outputPane2.getText() + "\n\nFound a pile of money");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound a pile of money.");
 							environment.crewAddMoney(100);
 							break;
 						case 3:
 							//nothing
 							System.out.println("found nothing");
-							outputPane2.setText(outputPane2.getText() + "\n\nFound nothing");
+							outputPane2.setText(outputPane2.getText() + "\n\nFound nothing.");
 							break;
 						}
 						
@@ -253,7 +257,7 @@ public class ActionWindow {
 						outputPane2.setText(activePerson.getName() + " is too tired to search the planet!");
 					}
 				}else {
-					outputPane2.setText("Already searched the Planet");
+					outputPane2.setText("This planet has already been searched!");
 				}
 			}
 		});
@@ -285,6 +289,13 @@ public class ActionWindow {
 						}
 						if (s.getStatus()) {
 							s.loseHealth(20);
+							if (s.getHealth() <= 0) {
+								crewMembers.removeMember(s);
+								if (crewMembers.getSize() == 0) {
+									environment.launchFailure();
+									frame.dispose();
+								}
+							}
 						}
 					}
 					environment.launchEvent();

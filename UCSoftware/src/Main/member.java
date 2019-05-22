@@ -3,7 +3,7 @@ package Main;
 public class member {
 
 	private String name;
-	private static float health;
+	private float health;
 	private float hunger;
 	private float tiredness;
 	private boolean sick;
@@ -19,7 +19,7 @@ public class member {
 		hunger = type.getBaseHunger() * 10;
 	}
 	
-	public void plage() {
+	public void plague() {
 		sick = true;
 	}
 
@@ -88,6 +88,9 @@ public class member {
 	
 	public void loseHealth(int value) {
 		health -= value;
+		if (health <= 0) {
+			
+		}
 	}
 	public void meds(float amount) {
 		health += amount;

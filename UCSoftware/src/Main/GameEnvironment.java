@@ -17,7 +17,7 @@ public class GameEnvironment {
 	protected List<item> masterItems = new ArrayList<>();
 	protected List<Type2> masterTypes = new ArrayList<>();
 	public String shipName;
-	public int shieldHp = 10;
+	public int shieldHp = 1;
 	private int days = 3;
 	private int currentDay = 0;
 	public crew Crew;
@@ -74,11 +74,15 @@ public class GameEnvironment {
 		}
 		
 	}
-	//cal parts needed
+	//call parts needed
 	public void setPartsNeeded(int days) {
 		float temp = days * (2f/3f);
 		partsNeeded = (int) temp;
 		System.out.println("Parts Needed: " + partsNeeded);
+	}
+	
+	public int getPartsNeeded() {
+		return partsNeeded;
 	}
 	
 	//get random item
@@ -267,6 +271,10 @@ public class GameEnvironment {
 		FailureWindow fail = new FailureWindow(this, Crew);
 	}
 	
+	public void launchWin() {
+		WinScreenWindow win = new WinScreenWindow(this, Crew);
+	}
+	
 	public void launchPlanetChanger() {
 		PlanetChangeWindow changer = new PlanetChangeWindow(this, Crew);
 	}
@@ -284,8 +292,9 @@ public class GameEnvironment {
 			if (s.getTypeName() == "Pushover"){
 					score += 500;}
 			}
-			score += days * 100;
-			return score;
+		score += currentParts * 400;
+		score += days * 100;
+		return score;
 		}
 	
 	/**
