@@ -80,6 +80,12 @@ public class ActionWindow {
 		
 		// selects the current crew member
 		JComboBox memberSelect = new JComboBox();
+		memberSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
+				lblCrewMemberHas.setText(activePerson.getName() + " has " + activePerson.getActions() + " actions left, what should they do?\n");
+			}
+		});
 		memberSelect.setBounds(184, 42, 143, 20);
 		frame.getContentPane().add(memberSelect);
 		for (member item : environment.Crew.getMembers()) {
@@ -116,7 +122,6 @@ public class ActionWindow {
 		sleepButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				activePerson = crew.Members.get(memberSelect.getSelectedIndex());
 				if (activePerson.getActions() > 0) {
 					String hungryStatus = "";
 					if (activePerson.getHunger() == 0) {
