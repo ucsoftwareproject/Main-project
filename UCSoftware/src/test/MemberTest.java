@@ -20,6 +20,11 @@ public class MemberTest{
 	@BeforeEach
 	public void init() {
 		masterTypes.add(new Type2("ENGINEER"));
+		masterTypes.add(new Type2("ATHLETE"));
+		masterTypes.add(new Type2("SCIENTIST"));
+		masterTypes.add(new Type2("PUSHOVER"));
+		masterTypes.add(new Type2("CYBORG"));
+		masterTypes.add(new Type2("DOCTOR"));
 		testMember = new member ("Test", masterTypes.get(0));
 	}
 	
@@ -44,71 +49,71 @@ public class MemberTest{
 	@Test
 	void testGetHealth() {
 		float health = testMember.getHealth();
-		assertTrue(health == 50);
+		assertEquals(health, 50);
 	}
 	
 	@Test
 	void testGetTiredness() {
 		float tiredness = testMember.getTiredness();
-		assertTrue(tiredness == 50);
+		assertEquals(tiredness, 50);
 	}
 	
 	@Test
 	void testGetHunger() {
 		float hunger = testMember.getHunger();
-		assertTrue(hunger == 50);
+		assertEquals(hunger, 50);
 	}
 	
 	@Test
 	void testGetTypeName() {
 		String name = testMember.getTypeName();
-		assertTrue(name == "Engineer");
+		assertEquals(name, "Engineer");
 	}
 	
 	@Test
 	void testgetBaseRepair() {
 		float repair = testMember.getBaseRepair();
-		assertTrue(repair == 8);
+		assertEquals(repair, 8);
 	}
 	
 	@Test
 	void testSetActions() {
 		testMember.setActions(5);
 		float actions = testMember.getActions();
-		assertTrue(actions == 5);
+		assertEquals(actions, 5);
 	}
 	
 	@Test
 	void testSleep() {
 		testMember.sleep();
 		float tiredness = testMember.getTiredness();
-		assertTrue(tiredness == 80);
+		assertEquals(tiredness, 80);
 	}
 	
 	@Test
 	void testWork() {
 		testMember.work();
 		float tiredness = testMember.getTiredness();
-		assertTrue(tiredness == 40);
+		assertEquals(tiredness, 40);
 	}
 	
 	@Test
 	void testConsumeAction() {
 		testMember.setActions(5);
 		testMember.consumeAction();
-		assertTrue(testMember.getActions() == 4);
+		assertEquals(testMember.getActions(), 4);
 	}
 
 	@Test
 	void testEat() {
 		testMember.eat(20);
-		assertTrue(testMember.getHunger() == 70);
+		assertEquals(testMember.getHunger(), 70);
 	}	
 	
 	@Test
 	void testLoseHunger() {
 		testMember.loseHunger();
-		assertTrue(testMember.getHunger() == 40);
+		assertEquals(testMember.getHunger(), 40);
 	}
 	
 	@Test
@@ -117,12 +122,12 @@ public class MemberTest{
 		item Item2 = new item("test2", 0, 10f, 1, 10f);
 		item Item3 = new item("test3", 0, 10f, 2, 10f);
 		testMember.useItem(Item1);
-		assertTrue(testMember.getHunger() == 60f);
+		assertEquals(testMember.getHunger(), 60f);
 		testMember.useItem(Item2);
-		assertTrue(testMember.getHealth() == 60f);
+		assertEquals(testMember.getHealth(), 60f);
 		testMember.useItem(Item3);
-		assertTrue(testMember.getHealth() == 70f);
-		assertTrue(testMember.getHunger() == 70f);
+		assertEquals(testMember.getHealth(), 70f);
+		assertEquals(testMember.getHunger(), 70f);
 		
 		
 	}
@@ -130,7 +135,7 @@ public class MemberTest{
 	@Test
 	void testLoseHealth() {
 		testMember.loseHealth(20);
-		assertTrue(testMember.getHealth() == 30);
+		assertEquals(testMember.getHealth(), 30);
 	}
 	
 	@Test
@@ -138,7 +143,7 @@ public class MemberTest{
 		testMember.plague();
 		
 		testMember.meds(30);
-		assertTrue(testMember.getHealth() == 80);
+		assertEquals(testMember.getHealth(),80);
 		assertFalse(testMember.getStatus());
 
 	}
