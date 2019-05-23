@@ -1,18 +1,43 @@
 package Main;
-
+/**
+ * @author      Daniel McInnes dmc245@uclive.ac.nz , David
+ * @version     1.0
+ * @since       1.0
+ */
 public class Type2 {
+	/**
+	 * Health buff
+	 */
 	float healthBuff;
+	/**
+	 * tiredness Buff
+	 */
 	float tirednessBuff;
+	/**
+	 * hunger Buff
+	 */
 	float hungerBuff;
+	/**
+	 * is repair Buff
+	 */
 	int repairBuff;
+	/**
+	 * type name
+	 */
 	public String typeName;
 	
-	
+	/**
+	 * used for setting type
+	 * @param type type being set
+	 */
 	public Type2(String type) {
 		setStats(type);
 	}
 	
-	//sets the individual stats of the class
+	/**
+	 * set the type and buffs
+	 * @param state type to be set
+	 */
 	public void setStats(String state) {
 		switch (state) {
 			case "ENGINEER":
@@ -64,28 +89,43 @@ public class Type2 {
 				break;
 		}
 	}	
-	//gives the base stat for max health
+	/**
+	 * get base health 
+	 * @return returns the buff
+	 */
 	public float getBaseHealth(){
 		return healthBuff;
 	}
 	
 	
-	//gets the base stat for tiredness
+	/**
+	 *get base tiredness
+	 *@return returns the buff
+	 */
 	public float getBaseTiredness() {
 		return tirednessBuff;
 	}
 	
-	//gets the base stat for hunger
+	/**
+	 * get base hunger
+	 * @return returns the buff
+	 */
 	public float getBaseHunger() {
 		return hungerBuff;
 	}
 	
-	//gets the base stat for repairing
+	/**
+	 * get base repair
+	 * @return returns the buff
+	 */
 	public int getBaseRepair() {
 		return repairBuff;
 	}
 	
-	//gets the name
+	/**
+	 * get name 
+	 * @return name of type
+	 */
 	public String getTypeName() {
 		return typeName;
 	}
