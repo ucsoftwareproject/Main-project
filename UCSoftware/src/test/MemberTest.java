@@ -112,6 +112,22 @@ public class MemberTest{
 	}
 	
 	@Test
+	void testuseItem() {
+		item Item1 = new item("test1", 0, 10f, 0, 10f);
+		item Item2 = new item("test2", 0, 10f, 1, 10f);
+		item Item3 = new item("test3", 0, 10f, 2, 10f);
+		testMember.useItem(Item1);
+		assertTrue(testMember.getHunger() == 60f);
+		testMember.useItem(Item2);
+		assertTrue(testMember.getHealth() == 60f);
+		testMember.useItem(Item3);
+		assertTrue(testMember.getHealth() == 70f);
+		assertTrue(testMember.getHunger() == 70f);
+		
+		
+	}
+	
+	@Test
 	void testLoseHealth() {
 		testMember.loseHealth(20);
 		assertTrue(testMember.getHealth() == 30);
