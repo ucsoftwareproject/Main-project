@@ -84,10 +84,10 @@ public class GameEnvironment {
 	
 	/**
 	 * adds money to crew.
-	 * @param  maxAmmount max ammount of money to be added.
+	 * @param  maxAmount max amount of money to be added.
 	 */
-	public void crewAddMoney(int maxAmmount) {
-		int amount = randomNumber(maxAmmount);
+	public void crewAddMoney(int maxAmount) {
+		int amount = randomNumber(maxAmount);
 		Crew.addMoney(amount);
 	}
 	
@@ -236,8 +236,8 @@ public class GameEnvironment {
 	}
 
 	/**
-	 * get gets the sheilds HP
-	 * @return HP of the sheilds.
+	 * get the shield HP
+	 * @return HP of the shields.
 	 */
 	public int getShieldHP () {
 		return shieldHp;
@@ -253,7 +253,7 @@ public class GameEnvironment {
 
 	/**
 	 * get current day.
-	 * @param  damage_v damage the sheilds will take
+	 * @param  damage_v damage the shields will take
 	 */
 	public void damageShield(int damage_v) {
 		shieldHp -= damage_v;

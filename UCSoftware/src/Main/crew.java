@@ -91,7 +91,7 @@ public class crew {
 	}
 	
 	/**
-	 * Plage
+	 * Plague
 	 * <p>
 	 * makes a random crew member sick
 	 */
