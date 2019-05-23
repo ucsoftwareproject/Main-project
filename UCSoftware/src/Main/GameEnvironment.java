@@ -8,30 +8,73 @@ import java.util.Random;
 import java.util.List;
 
 /**
- * @author daniel
- *
+ * @author      Daniel McInnes dmc245@uclive.ac.nz , David
+ * @version     1.0
+ * @since       1.0
  */
 public class GameEnvironment {
 
-	
+	/**
+	 * MasterList of items.
+	 */
 	protected List<item> masterItems = new ArrayList<>();
+	/**
+	 * Master list of types.
+	 */
 	protected List<Type2> masterTypes = new ArrayList<>();
+	/**
+	 * The Name of the ship.
+	 */
 	public String shipName;
+	/**
+	 * The health of the ship.
+	 */
 	public int shieldHp = 10;
+	/**
+	 * The days left.
+	 */
 	private int days = 3;
+	/**
+	 * The crew.
+	 */
 	public crew Crew;
+	/**
+	 * The outpost.
+	 */
 	public outpost Outpost = new outpost();
+	/**
+	 * The total ship parts needed.
+	 */
 	public int partsNeeded;
+	/**
+	 * The current number of ship parts.
+	 */
 	public int currentParts = 0;
+	/**
+	 * The planet.
+	 */
 	public Planet planet;
 	
-	//find item
+	
+	
+	/**
+	 * sets the planet to searched.
+	 */
 	public void planetSearched() {
 		planet.searched();
 	}
+	
+	/**
+	 * sets the planet to not searched
+	 */
 	public void newPlanet() {
 		planet.newPlanet();
 	}
+	
+	/**
+	 * check if planet is searched.
+	 * @return boolean true if searched
+	 */
 	public boolean searched() {
 		return planet.isSearched();
 	}
@@ -39,33 +82,51 @@ public class GameEnvironment {
 	
 	
 	
-	//add money to crew
+	/**
+	 * adds money to crew.
+	 * @param  maxAmmount max ammount of money to be added.
+	 */
 	public void crewAddMoney(int maxAmmount) {
 		int amount = randomNumber(maxAmmount);
 		Crew.addMoney(amount);
 	}
 	
 	
-	// add item to crew
+	/**
+	 * adds item to crew.
+	 * @param  item item to be added
+	 */
 	public void crewAddItem(item item) {
 		Crew.addItem(item);
 	}
 	
-	//get random number
+	/**
+	 * gets a random number in range.
+	 * @param  max max number.
+	 * @return random number
+	 */
 	public int randomNumber(int max) {
 		Random rand = new Random();
 		return rand.nextInt(max);
 	}
 	
-	//get needed parts
+	/**
+	 * gets parts needed.
+	 * @return number of parts.
+	 */
 	public int partsTotal() {
 		return partsNeeded;
 	}
-	//get current parts
+	/**
+	 * Parts the crew has.
+	 * @return amount of parts the crew has
+	 */
 	public int partsCurrent() {
 		return currentParts;
 	}
-	//add part
+	/**
+	 * dead function
+	 */
 	public void addPart() {
 		currentParts += 1;
 		if (currentParts >= partsNeeded) {
@@ -73,24 +134,39 @@ public class GameEnvironment {
 		}
 		
 	}
-	//call parts needed
+	/**
+	 * Set the amount of parts needed to win
+	 * @param days length of the game.
+	 */
 	public void setPartsNeeded(int days) {
 		float temp = days * (2f/3f);
 		partsNeeded = (int) temp;
 		System.out.println("Parts Needed: " + partsNeeded);
 	}
-	
+	/**
+	 * gets the parts needed.
+	 * @return the parts needed.
+	 */
 	public int getPartsNeeded() {
 		return partsNeeded;
 	}
 	
-	//get random item
+	/**
+	 * gets a random item form the item list. 
+	 * @return random item from the master list.
+	 */
 	public item get_random_item() {
 		
 		Random rand = new Random();
 		return masterItems.get(rand.nextInt(masterItems.size()));
 	}
-	//spawn outpost
+	/**
+	 * spawns a new outpost
+	 * <p>
+	 * clears the old outpost shop and and makes a new one.
+	 * 
+	 * @param  size size of outpost shop.
+	 */
 	public void spawnItems(int size) {
 		System.out.println("Outpost changing (spawning new items)");
 		Outpost.clearItems();
@@ -99,8 +175,6 @@ public class GameEnvironment {
 			Outpost.addItems(get_random_item());
 			i += 1;
 		}
-		
-		// for testing
 		System.out.println("Outpost items:");
 		for (item s: Outpost.getItems()) {
 			System.out.println("\t* " + s.getName());
@@ -108,65 +182,103 @@ public class GameEnvironment {
 		System.out.println("\n");
 		
 	}
-	//get item in shop
+	/**
+	 * Gets a list of items from the shop
+	 * @return list of items in shop.
+	 */
 	public List<item> shop_items(){
 		return Outpost.getItems();
 	}
 	
 	
-	//outpost 
+	/**
+	 * gets the outpost
+	 * @return returns the outpost
+	 */
 	public outpost getOutpost() {
 		return Outpost;
 	}
 	
-	// day functions
+	/**
+	 * sets the days
+	 * @param  day The day to be set.
+	 */
 	public void setDays(int day) {
 		days = day;
 	}
+	/**
+	 * add one to the day
+	 */
 	public void addDay () {
 		if(days < 10) {
 			days += 1;}
 	}
-	// used for setting the day in the GUI
+	/**
+	 * removes a day
+	 */
 	public void minusDay () {
 		if(days > 3) {
 			days -= 1;}
 	}
 	
-	//used for ending the day in the game environment
+	/**
+	 * end of day
+	 */
 	public void endDay () {
 			days -= 1;
-			//spawnItems(6);
 	}
-	
+	/**
+	 * get current day.
+	 * @return the day as a string.
+	 */
 	public String getDay() {
 		return String.valueOf(days);
 	}
-	//get ship hp
+
+	/**
+	 * get gets the sheilds HP
+	 * @return HP of the sheilds.
+	 */
 	public int getShieldHP () {
 		return shieldHp;
 	}
-	//add ship hp
+
+	/**
+	 * get current day.
+	 * @param repair_v ammount to repair the shield
+	 */
 	public void addShieldHP(int repair_v) {
 		shieldHp += repair_v;
 	}
-	//ship take damage
+
+	/**
+	 * get current day.
+	 * @param  damage_v damage the sheilds will take
+	 */
 	public void damageShield(int damage_v) {
 		shieldHp -= damage_v;
 	}
 	
-	//prints days for debug
+
+	/**
+	 * console day output
+	 */
 	public void dayDebug() {
 		System.out.println("total days: " + getDay() + "\n");
 	}
 	
-	//prints days for debug
+
+	/**
+	 * runs console debug output
+	 */
 	public void crewDebug() {
 		Crew.debug();
 	}
 	
 	
-	//builds Master_ items list
+	/**
+	 * Builds master item list
+	 */
 	private void buildItems() {
 		
 		// food
@@ -191,6 +303,9 @@ public class GameEnvironment {
 		System.out.println("\n");
 	}
 		
+	/**
+	 * Builds main charter types
+	 */
 	private void buildTypes() {
 		
 		masterTypes.add(new Type2("ENGINEER"));
@@ -208,7 +323,9 @@ public class GameEnvironment {
 		System.out.println("\n");
 	}
 	
-	//main setup controller
+	/**
+	 * Main game setup
+	 */
 	public GameEnvironment() {
 		
 		//builds master lists
@@ -222,21 +339,27 @@ public class GameEnvironment {
 		spawnItems(6);
 		
 	}
-	
+	/**
+	 * get current day.
+	 * @param name the name of the Member
+	 * @param Type the type of the member 
+	 */
 	public void addMember(String name, Type2 Type) {
 		member Member = new member(name, Type);
 		Crew.addMember(Member);
 	}
 	
-	
-	
-	
-	
-	//sets the ships name
+	/**
+	 * sets the name of the ship
+	 * @param name set the name of the ship
+	 */
 	public void setShipName(String name) {
 		shipName = name;
 	}
-	
+	/**
+	 * get the name of the ship
+	 * @return ship name
+	 */
 	public String getShipName() {
 		return(shipName);
 	}
@@ -282,6 +405,10 @@ public class GameEnvironment {
 		ItemUseWindow item = new ItemUseWindow(this, Crew);
 	}
 	
+	/**
+	 * get the score for the game
+	 * @return the total score
+	 */
 	public int getScore() {
 		int score = 0;
 		for (member s: Crew.getMembers()) {
@@ -297,7 +424,8 @@ public class GameEnvironment {
 		}
 	
 	/**
-	 * @param args
+	 * program start
+	 * @param args main args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
