@@ -26,7 +26,7 @@ public class member {
 	/**
 	 * is crew member sick
 	 */
-	private boolean sick;
+	public boolean sick;
 	/**
 	 * type of crew member
 	 */
