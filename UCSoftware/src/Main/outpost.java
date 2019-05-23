@@ -9,22 +9,11 @@ import java.util.List;
  */
 
 public class outpost {
-	/**
-	 * outpost distance
-	 */
-	private int distance;
+
 	/**
 	 * list of items in the outpost
 	 */
 	protected List<item> items = new ArrayList<>();
-	
-	/**
-	 * get Distance
-	 * @return returns distance
-	 */
-	public int getDistance() {
-		return distance;
-	}
 	
 	/**
 	 * add item to outpost
