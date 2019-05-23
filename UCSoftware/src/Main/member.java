@@ -1,7 +1,7 @@
 package Main;
 
 /**
- * @author      Daniel McInnes dmc245@uclive.ac.nz , David
+ * @author      Daniel McInnes, David Turton
  * @version     1.0
  * @since       1.0
  */
